@@ -1,31 +1,24 @@
--- phpMyAdmin SQL Dump
--- version 2.6.4-pl2
--- http://www.phpmyadmin.net
--- 
--- Host: mysql3.freehostia.com
--- Generation Time: Mar 29, 2007 at 07:50 PM
--- Server version: 4.1.11
--- PHP Version: 4.3.10-16
--- 
--- Database: `chadun5_bliss`
--- 
-
--- --------------------------------------------------------
-
 -- 
 -- Table structure for table `airport`
 -- 
 
 CREATE TABLE airport (
   id int(11) NOT NULL auto_increment,
-  owner varchar(40) NOT NULL default '',
-  location enum('London','New York','Beijing','Rome','Moscow','Bogota') NOT NULL default 'London',
-  travel_prices varchar(100) NOT NULL default '100-100-100-100-100-100',
+  ownerid int(11) NOT NULL default 1,
+  ownerusername varchar(50) NOT NULL default 'ASCII',
+  location tinyint(1) NOT NULL default 1,
+  travel_prices varchar(50) NOT NULL default '100-100-100-100-100-100',
   profit varchar(100) NOT NULL default '0-0-0-0-0-0',
   PRIMARY KEY  (id),
   KEY id (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+INSERT INTO airport(`location`) VALUES (1);
+INSERT INTO airport(`location`) VALUES (2);
+INSERT INTO airport(`location`) VALUES (3);
+INSERT INTO airport(`location`) VALUES (4);
+INSERT INTO airport(`location`) VALUES (5);
+INSERT INTO airport(`location`) VALUES (6);
 -- --------------------------------------------------------
 
 -- 
@@ -34,12 +27,14 @@ CREATE TABLE airport (
 
 CREATE TABLE attempts (
   id int(11) NOT NULL auto_increment,
-  username char(40) NOT NULL default '',
-  target char(40) NOT NULL default '',
+  userid int(11) NOT NULL default 1,
+  username varchar(50) NOT NULL,
+  targetid int(11) NOT NULL,
+  targetusername varchar(50) NOT NULL,
   outcome enum('Dead','Survived') NOT NULL default 'Dead',
   `date` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=380 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -49,18 +44,19 @@ CREATE TABLE attempts (
 
 CREATE TABLE auctions (
   id int(11) NOT NULL auto_increment,
-  username varchar(40) NOT NULL default '',
+  userid int(11) NOT NULL,
+  username varchar(50) NOT NULL,
   min_starting int(11) NOT NULL default '0',
   current_bid int(11) NOT NULL default '0',
-  winning varchar(40) NOT NULL default '',
+  winning varchar(40) NOT NULL,
   winning_bid int(11) NOT NULL default '0',
-  item_type varchar(100) NOT NULL default '',
-  `time` varchar(100) NOT NULL default '',
-  item_id varchar(100) NOT NULL default '',
+  item_type varchar(100) NOT NULL,
+  `time` varchar(100) NOT NULL,
+  item_id varchar(100) NOT NULL,
   an enum('0','1') NOT NULL default '0',
   pvt enum('0','1') NOT NULL default '0',
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2072 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -70,13 +66,15 @@ CREATE TABLE auctions (
 
 CREATE TABLE ban (
   id int(11) NOT NULL auto_increment,
-  username varchar(40) NOT NULL default '',
-  `by` varchar(40) NOT NULL default '',
+  userid int(11) NOT NULL,
+  username varchar(11) NOT NULL,
+  `by` int(11) NOT NULL,
+  byusername varchar(50) NOT NULL,
   `type` enum('0','1') NOT NULL default '0',
   reason text NOT NULL,
-  length varchar(100) NOT NULL default '',
+  length varchar(100) NOT NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=165 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -86,27 +84,20 @@ CREATE TABLE ban (
 
 CREATE TABLE bank (
   id int(11) NOT NULL auto_increment,
-  owner char(40) NOT NULL default '',
-  send_intrest int(11) NOT NULL default '1',
-  location enum('London','New York','Beijing','Rome','Moscow','Bogota') NOT NULL default 'London',
-  profit int(100) NOT NULL default '0',
+  ownerid int(11) NOT NULL default 1,
+  ownerusername varchar(50) NOT NULL default 'ASCII',
+  send_interest int(11) NOT NULL default 1,
+  location tinyint(1) NOT NULL default 1,
+  profit int(11) NOT NULL default 0,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=347 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
--- 
--- Table structure for table `bank2`
--- 
-
-CREATE TABLE bank2 (
-  id int(11) NOT NULL auto_increment,
-  owner char(40) NOT NULL default '',
-  send_intrest int(11) NOT NULL default '1',
-  location enum('London','New York','Beijing','Rome','Moscow','Bogota') NOT NULL default 'London',
-  profit int(100) NOT NULL default '0',
-  PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+INSERT INTO bank(`location`) VALUES (1);
+INSERT INTO bank(`location`) VALUES (2);
+INSERT INTO bank(`location`) VALUES (3);
+INSERT INTO bank(`location`) VALUES (4);
+INSERT INTO bank(`location`) VALUES (5);
+INSERT INTO bank(`location`) VALUES (6);
 
 -- --------------------------------------------------------
 
@@ -116,11 +107,19 @@ CREATE TABLE bank2 (
 
 CREATE TABLE bar (
   id int(11) NOT NULL auto_increment,
-  owner char(40) NOT NULL default '',
-  location enum('London','New York','Beijing','Rome','Moscow','Bogota') NOT NULL default 'London',
-  profit int(50) NOT NULL default '0',
+  ownerid int(11) NOT NULL default 1,
+  ownerusername varchar(50) NOT NULL default 'ASCII',
+  location tinyint(1) NOT NULL default 1,
+  profit int(11) NOT NULL default '0',
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+INSERT INTO bar(`location`) VALUES (1);
+INSERT INTO bar(`location`) VALUES (2);
+INSERT INTO bar(`location`) VALUES (3);
+INSERT INTO bar(`location`) VALUES (4);
+INSERT INTO bar(`location`) VALUES (5);
+INSERT INTO bar(`location`) VALUES (6);
 
 -- --------------------------------------------------------
 
@@ -130,11 +129,13 @@ CREATE TABLE bar (
 
 CREATE TABLE betlogs (
   id int(11) NOT NULL default '0',
-  `user` varchar(40) NOT NULL default '',
-  owner varchar(50) NOT NULL default '',
+  userid int(11) NOT NULL,
+  username varchar(50) NOT NULL,
+  ownerid int(11) NOT NULL,
+  ownerusername varchar(50) NOT NULL default 'ASCII',
   casino enum('Slots','Roulette','RPS','Race','Keno','bj','Dice') NOT NULL default 'Slots',
-  bet int(50) NOT NULL default '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  bet int(11) NOT NULL default '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -144,14 +145,22 @@ CREATE TABLE betlogs (
 
 CREATE TABLE bf (
   id int(11) NOT NULL auto_increment,
-  owner varchar(40) NOT NULL default '',
-  stock int(100) NOT NULL default '0',
+  ownerid int(11) NOT NULL default 1,
+  ownerusername varchar(50) NOT NULL default 'ASCII',
+  stock int(11) NOT NULL default '0',
   producing enum('Yes','No') NOT NULL default 'Yes',
-  price int(100) NOT NULL default '100',
-  location enum('London','New York','Beijing','Rome','Moscow','Bogota') NOT NULL default 'London',
-  profit varchar(100) NOT NULL default '',
+  price int(4) NOT NULL default '1000',
+  location tinyint(1) NOT NULL default 1,
+  profit int(11) NOT NULL default 0,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+INSERT INTO bf(`location`) VALUES (1);
+INSERT INTO bf(`location`) VALUES (2);
+INSERT INTO bf(`location`) VALUES (3);
+INSERT INTO bf(`location`) VALUES (4);
+INSERT INTO bf(`location`) VALUES (5);
+INSERT INTO bf(`location`) VALUES (6);
 
 -- --------------------------------------------------------
 
@@ -161,29 +170,14 @@ CREATE TABLE bf (
 
 CREATE TABLE bidders (
   id int(11) NOT NULL auto_increment,
-  bidder char(40) NOT NULL default '',
+  bidderid int(11) NOT NULL,
+  bidderusername varchar(50) NOT NULL,
   amount int(11) NOT NULL default '0',
   auction_id int(11) NOT NULL default '0',
   `time` datetime NOT NULL default '0000-00-00 00:00:00',
   an enum('0','1') NOT NULL default '0',
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1379 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `bj`
--- 
-
-CREATE TABLE bj (
-  id int(11) NOT NULL auto_increment,
-  country enum('London','New York','Beijing','Rome','Moscow','Bogota') NOT NULL default 'London',
-  bjowner varchar(100) NOT NULL default '',
-  bjmaxbet varchar(100) NOT NULL default '',
-  bjminbet varchar(100) NOT NULL default '',
-  bjearnings varchar(100) NOT NULL default '',
-  PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -193,13 +187,20 @@ CREATE TABLE bj (
 
 CREATE TABLE blackjack (
   id int(11) NOT NULL auto_increment,
-  owner varchar(40) NOT NULL default '',
-  casino enum('Slots','Roulette','RPS','Race') NOT NULL default 'Slots',
-  profit varchar(100) NOT NULL default '',
-  max int(11) NOT NULL default '0',
-  location enum('England','Japan','Colombia','Usa','South Africa','Mexico') NOT NULL default 'England',
+  ownerid int(11) NOT NULL default 1,
+  ownerusername varchar(50) NOT NULL default 'ASCII',
+  profit int(11) NOT NULL,
+  `max` int(11) NOT NULL default '0',
+  location tinyint(1) NOT NULL default 1,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+INSERT INTO blackjack(`location`) VALUES (1);
+INSERT INTO blackjack(`location`) VALUES (2);
+INSERT INTO blackjack(`location`) VALUES (3);
+INSERT INTO blackjack(`location`) VALUES (4);
+INSERT INTO blackjack(`location`) VALUES (5);
+INSERT INTO blackjack(`location`) VALUES (6);
 
 -- --------------------------------------------------------
 
@@ -209,16 +210,17 @@ CREATE TABLE blackjack (
 
 CREATE TABLE buisnesses (
   id int(11) NOT NULL auto_increment,
-  owner varchar(40) NOT NULL default '',
-  size varchar(40) NOT NULL default '',
-  profit varchar(100) NOT NULL default '',
-  slogan varchar(100) NOT NULL default '',
-  logo varchar(100) NOT NULL default '',
-  color1 varchar(100) NOT NULL default '',
-  color2 varchar(100) NOT NULL default '',
+  ownerid int(11) NOT NULL,
+  ownerusername varchar(50) NOT NULL default 'ASCII',
+  `size` varchar(40) NOT NULL,
+  profit varchar(100) NOT NULL,
+  slogan varchar(100) NOT NULL,
+  logo varchar(100) NOT NULL,
+  color1 varchar(100) NOT NULL,
+  color2 varchar(100) NOT NULL,
   PRIMARY KEY  (id),
   KEY id (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -228,15 +230,22 @@ CREATE TABLE buisnesses (
 
 CREATE TABLE car_sell (
   id int(11) NOT NULL auto_increment,
-  owner char(40) NOT NULL default '',
-  car_id int(50) NOT NULL default '0',
-  price int(50) NOT NULL default '0',
+  ownerid int(11) NOT NULL default 1,
+  ownerusername varchar(50) NOT NULL default 'ASCII',
+  car_id int(11) NOT NULL default 0,
+  price int(11) NOT NULL default 0,
   `date` datetime NOT NULL default '0000-00-00 00:00:00',
-  car_type char(40) NOT NULL default '',
-  location enum('London','New York','Beijing','Rome','Moscow','Bogota') NOT NULL default 'London',
+  car_type char(40) NOT NULL,
+  location tinyint(1) NOT NULL default 1,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1848 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
+INSERT INTO `car_sell` (`location`) VALUES (1);
+INSERT INTO `car_sell` (`location`) VALUES (2);
+INSERT INTO `car_sell` (`location`) VALUES (3);
+INSERT INTO `car_sell` (`location`) VALUES (4);
+INSERT INTO `car_sell` (`location`) VALUES (5);
+INSERT INTO `car_sell` (`location`) VALUES (6);
 -- --------------------------------------------------------
 
 -- 
@@ -245,29 +254,49 @@ CREATE TABLE car_sell (
 
 CREATE TABLE casinos (
   id int(11) NOT NULL auto_increment,
-  owner varchar(40) NOT NULL default '',
+  ownerid int(11) NOT NULL default 1,
+  ownerusername varchar(50) NOT NULL default 'ASCII',
   casino enum('Slots','Roulette','RPS','Keno','Dice') NOT NULL default 'Slots',
   profit int(11) NOT NULL default '0',
-  max int(11) NOT NULL default '0',
-  location enum('London','New York','Beijing','Rome','Moscow','Bogota') NOT NULL default 'London',
+  `max` int(11) NOT NULL default '0',
+  location tinyint (1)NOT NULL default 1,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=469 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
--- --------------------------------------------------------
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Slots', 1);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Slots', 2);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Slots', 3);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Slots', 4);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Slots', 5);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Slots', 6);
 
--- 
--- Table structure for table `chat`
--- 
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Roulette', 1);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Roulette', 2);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Roulette', 3);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Roulette', 4);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Roulette', 5);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Roulette', 6);
 
-CREATE TABLE chat (
-  id int(32) NOT NULL auto_increment,
-  `user` varchar(100) NOT NULL default '',
-  chat varchar(100) NOT NULL default '',
-  timeh varchar(20) NOT NULL default '',
-  timem varchar(20) NOT NULL default '',
-  PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2036 ;
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('RPS', 1);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('RPS', 2);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('RPS', 3);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('RPS', 4);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('RPS', 5);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('RPS', 6);
 
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Keno', 1);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Keno', 2);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Keno', 3);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Keno', 4);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Keno', 5);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Keno', 6);
+
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Dice', 1);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Dice', 2);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Dice', 3);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Dice', 4);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Dice', 5);
+INSERT INTO `casinos` (`casino`, `location`) VALUES ('Dice', 6);
 -- --------------------------------------------------------
 
 -- 
@@ -276,18 +305,20 @@ CREATE TABLE chat (
 
 CREATE TABLE crews (
   id int(11) NOT NULL auto_increment,
-  name varchar(250) NOT NULL default '',
-  boss varchar(100) NOT NULL default '0',
-  underboss varchar(100) NOT NULL default '0',
-  money int(20) NOT NULL default '0',
+  `name` varchar(50) NOT NULL,
+  bossid int(11) NOT NULL default 0,
+  bossusername varchar(50) NOT NULL,
+  underbossid int(11) NOT NULL default 0,
+  underbossusername varchar(50) NOT NULL,
+  money int(11) NOT NULL default 0,
   recruiting enum('0','1') NOT NULL default '1',
   quote text NOT NULL,
-  bank int(50) NOT NULL default '0',
+  bank int(11) NOT NULL default 0,
   picture tinytext NOT NULL,
-  bullets int(50) NOT NULL default '0',
-  points int(40) NOT NULL default '0',
+  bullets int(11) NOT NULL default 0,
+  points int(11) NOT NULL default 0,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -297,42 +328,19 @@ CREATE TABLE crews (
 
 CREATE TABLE dealership (
   id int(11) NOT NULL auto_increment,
-  owner char(40) NOT NULL default '',
-  location enum('London','New York','Beijing','Rome','Moscow','Bogota') NOT NULL default 'London',
-  profit int(50) NOT NULL default '0',
+  ownerid int(11) NOT NULL default 1,
+  ownerusername varchar(50) NOT NULL default 'ASCII',
+  location tinyint(1) NOT NULL default 1,
+  profit int(11) NOT NULL default 0,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
--- --------------------------------------------------------
-
--- 
--- Table structure for table `donaters`
--- 
-
-CREATE TABLE donaters (
-  donater_id int(11) NOT NULL auto_increment,
-  username varchar(40) NOT NULL default '',
-  donater_pass varchar(40) NOT NULL default '',
-  amount int(50) NOT NULL default '0',
-  package enum('None','1','2','3','4') NOT NULL default 'None',
-  `on` varchar(100) NOT NULL default '',
-  PRIMARY KEY  (donater_id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `enemies`
--- 
-
-CREATE TABLE enemies (
-  id int(11) NOT NULL auto_increment,
-  username char(40) NOT NULL default '',
-  person char(40) NOT NULL default '',
-  `type` enum('enemie','Blocked') NOT NULL default 'enemie',
-  PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=329 ;
-
+INSERT INTO `dealership` (`location`) VALUES (1);
+INSERT INTO `dealership` (`location`) VALUES (2);
+INSERT INTO `dealership` (`location`) VALUES (3);
+INSERT INTO `dealership` (`location`) VALUES (4);
+INSERT INTO `dealership` (`location`) VALUES (5);
+INSERT INTO `dealership` (`location`) VALUES (6);
 -- --------------------------------------------------------
 
 -- 
@@ -341,11 +349,13 @@ CREATE TABLE enemies (
 
 CREATE TABLE friends (
   id int(11) NOT NULL auto_increment,
-  username char(40) NOT NULL default '',
-  person char(40) NOT NULL default '',
+  userid int(11) NOT NULL,
+  username varchar(50) NOT NULL,
+  otheruserid int(11) NOT NULL,
+  otherusername varchar(50) NOT NULL,
   `type` enum('Friend','Blocked') NOT NULL default 'Friend',
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1278 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -355,17 +365,17 @@ CREATE TABLE friends (
 
 CREATE TABLE garage (
   id int(11) NOT NULL auto_increment,
-  owner varchar(40) NOT NULL default '',
-  car varchar(100) NOT NULL default '',
-  damage varchar(100) NOT NULL default '',
-  origion varchar(100) NOT NULL default '',
-  location varchar(100) NOT NULL default '',
+  userid int(11) NOT NULL,
+  carid int(11) NOT NULL,
+  damage int(3) NOT NULL,
+  origin tinyint(1) NOT NULL,
+  location tinyint(1) NOT NULL default 1,
   upgrades varchar(100) NOT NULL default '0-0-0-0-0-0-0-0',
   `status` enum('0','1','2','3','4') NOT NULL default '0',
-  worth int(32) NOT NULL default '0',
-  shiptime varchar(100) NOT NULL default '',
+  worth int(11) NOT NULL default '0',
+  `shiptime` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=17002 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -375,15 +385,17 @@ CREATE TABLE garage (
 
 CREATE TABLE get_away (
   id int(11) NOT NULL auto_increment,
-  leader char(40) NOT NULL default '',
-  person char(40) NOT NULL default '',
+  leaderid int(11) NOT NULL,
+  leaderusername varchar(50) NOT NULL,
+  partnerid int(11) NOT NULL,
+  partnerusername varchar(50) NOT NULL,
   weapon enum('None','Sig Sauer P229','Jackhammer automatic shotgun','Heckler und Koch MP-5k','Browning M2HB') NOT NULL default 'None',
-  car int(50) NOT NULL default '0',
+  carid int(11) NOT NULL default 0,
   `share` enum('1','2') NOT NULL default '1',
-  person_ready char(40) NOT NULL default '',
-  invite_get char(40) NOT NULL default '',
+  person_ready char(40) NOT NULL,
+  invite_get char(40) NOT NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=78 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -392,14 +404,16 @@ CREATE TABLE get_away (
 -- 
 
 CREATE TABLE hitlist (
-  id int(32) NOT NULL auto_increment,
-  paid varchar(32) NOT NULL default '',
-  target varchar(32) NOT NULL default '',
-  reason varchar(120) NOT NULL default '',
-  amount int(32) NOT NULL default '0',
+  id int(11) NOT NULL auto_increment,
+  userid int(11) NOT NULL,
+  username varchar(50) NOT NULL,
+  targetid int(11) NOT NULL,
+  targetusername varchar(50) NOT NULL,
+  reason varchar(140) NOT NULL,
+  amount int(11) NOT NULL default '0',
   anonymous enum('1','2') NOT NULL default '1',
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=161 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -409,17 +423,19 @@ CREATE TABLE hitlist (
 
 CREATE TABLE inbox (
   id int(11) NOT NULL auto_increment,
-  `to` varchar(40) NOT NULL default '',
-  `from` varchar(40) NOT NULL default '',
+  `to` int(11) NOT NULL,
+  tousername varchar(50) NOT NULL,
+  `from` varchar(11) NOT NULL,
+  fromusername varchar(50) NOT NULL,
   message text NOT NULL,
   `date` datetime NOT NULL default '0000-00-00 00:00:00',
   `read` enum('0','1') NOT NULL default '0',
-  saved int(2) NOT NULL default '0',
+  saved tinyint(1) NOT NULL default '0',
   event_id int(11) NOT NULL default '0',
   witness enum('0','1') NOT NULL default '0',
-  witness_per varchar(40) NOT NULL default '',
+  witness_per varchar(40) NOT NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=57456 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -429,27 +445,14 @@ CREATE TABLE inbox (
 
 CREATE TABLE jail (
   id int(11) NOT NULL auto_increment,
-  username varchar(40) NOT NULL default '',
-  location enum('London','New York','Beijing','Rome','Moscow','Bogota') NOT NULL default 'London',
-  time_left varchar(100) NOT NULL default '',
-  reason varchar(100) NOT NULL default '',
+  userid int(11) NOT NULL,
+  username varchar(50) NOT NULL,
+  location tinyint(1) NOT NULL,
+  time_left int(3) NOT NULL,
+  reason varchar(140) NOT NULL,
   bust_able enum('0','1') NOT NULL default '0',
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=3476698 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `kill_chart`
--- 
-
-CREATE TABLE kill_chart (
-  id int(11) NOT NULL auto_increment,
-  target varchar(128) NOT NULL default '',
-  username varchar(128) NOT NULL default '',
-  bullets int(11) NOT NULL default '0',
-  PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=209 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -459,11 +462,12 @@ CREATE TABLE kill_chart (
 
 CREATE TABLE log (
   id int(11) NOT NULL auto_increment,
-  `by` varchar(100) NOT NULL default '',
-  `action` varchar(100) NOT NULL default '',
+  userid int(11) NOT NULL,
+  username varchar(50) NOT NULL,
+  `action` varchar(140) NOT NULL,
   `level` enum('0','1','2') NOT NULL default '0',
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2000 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -473,9 +477,9 @@ CREATE TABLE log (
 
 CREATE TABLE lotto (
   id int(11) NOT NULL auto_increment,
-  owner char(40) NOT NULL default '',
+  userid int(11) NOT NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=43 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -486,13 +490,13 @@ CREATE TABLE lotto (
 CREATE TABLE lotto_info (
   id int(11) NOT NULL auto_increment,
   price int(11) NOT NULL default '10000',
-  time_to int(100) NOT NULL default '0',
-  jackpot int(100) NOT NULL default '0',
-  lotto_num int(50) NOT NULL default '0',
-  winning_ticket int(50) NOT NULL default '0',
-  winner char(40) NOT NULL default '',
+  time_to datetime NOT NULL default '0000:00:00 00:00:00',
+  jackpot int(11) NOT NULL default '0',
+  lotto_num int(11) NOT NULL default '0',
+  winning_ticket int(11) NOT NULL default '0',
+  winner varchar(50) NOT NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -501,26 +505,15 @@ CREATE TABLE lotto_info (
 -- 
 
 CREATE TABLE married (
-  id int(32) NOT NULL auto_increment,
-  starter varchar(100) NOT NULL default '',
-  other varchar(100) NOT NULL default '',
-  done enum('0','1') NOT NULL default '0',
-  ring varchar(40) NOT NULL default '',
-  PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `matches`
--- 
-
-CREATE TABLE matches (
   id int(11) NOT NULL auto_increment,
-  username char(40) NOT NULL default '',
-  bet int(11) NOT NULL default '0',
+  starter int(11) NOT NULL,
+  starterusername varchar(50) NOT NULL,
+  other int(11) NOT NULL,
+  otherusername varchar(50) NOT NULL,
+  done enum('0','1') NOT NULL default '0',
+  ring int(1) NOT NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=4947 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -530,34 +523,38 @@ CREATE TABLE matches (
 
 CREATE TABLE oc (
   id int(32) NOT NULL auto_increment,
-  leader varchar(100) NOT NULL default '',
+  leaderid int(11) NOT NULL,
+  leaderusername varchar(50) NOT NULL,
   `type` enum('1','2','3') NOT NULL default '1',
-  wexpert varchar(100) NOT NULL default '',
-  eexpert varchar(100) NOT NULL default '',
-  driver varchar(100) NOT NULL default '',
+  wexpertid int(11) NOT NULL,
+  wexpertusername varchar(50) NOT NULL,
+  eexpertid int(11) NOT NULL,
+  eexpertusername varchar(50) NOT NULL,
+  driverid int(11) NOT NULL,
+  driverusername varchar(50) NOT NULL,
   weapons varchar(30) NOT NULL default '0-0-0-0',
   explosives varchar(30) NOT NULL default '0-0-0-0',
   wready enum('Pending Invite','Accepted Invite','Ready') NOT NULL default 'Pending Invite',
   eready enum('Pending Invite','Accepted Invite','Ready') NOT NULL default 'Pending Invite',
   dready enum('Pending Invite','Accepted Invite','Ready') NOT NULL default 'Pending Invite',
   percentages varchar(30) NOT NULL default '0',
-  weinvite varchar(100) NOT NULL default '',
-  eeinvite varchar(100) NOT NULL default '',
-  driverinvite varchar(100) NOT NULL default '',
-  location varchar(100) NOT NULL default '',
-  car varchar(100) NOT NULL default '',
-  cardam varchar(100) NOT NULL default '',
+  weinvite varchar(100) NOT NULL,
+  eeinvite varchar(100) NOT NULL,
+  driverinvite varchar(100) NOT NULL,
+  location varchar(100) NOT NULL,
+  car varchar(100) NOT NULL,
+  cardam varchar(100) NOT NULL,
   carid int(32) NOT NULL default '0',
   PRIMARY KEY  (id),
   KEY wready (wready),
   KEY eready (eready),
   KEY dready (dready),
-  KEY leader (leader),
+  KEY leader (leaderid),
   KEY wready_2 (wready),
-  KEY driver (driver),
-  KEY eexpert (eexpert),
-  KEY wexpert (wexpert)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 PACK_KEYS=0 AUTO_INCREMENT=978 ;
+  KEY driver (driverid),
+  KEY eexpert (eexpertid),
+  KEY wexpert (wexpertid)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -567,14 +564,15 @@ CREATE TABLE oc (
 
 CREATE TABLE ocinvites (
   id int(32) NOT NULL auto_increment,
-  username varchar(100) NOT NULL default '',
-  ocid int(32) NOT NULL default '0',
-  posistion enum('Weapons Expert','Explosives Expert','Driver') NOT NULL default 'Weapons Expert',
+  userid int(11) NOT NULL,
+  username varchar(50) NOT NULL,
+  ocid int(11) NOT NULL default '0',
+  `position` enum('Weapons Expert','Explosives Expert','Driver') NOT NULL default 'Weapons Expert',
   octype enum('1','2','3') NOT NULL default '1',
-  leader varchar(100) NOT NULL default '',
-  location varchar(100) NOT NULL default '',
+  leaderusername varchar(50) NOT NULL,
+  location tinyint(1) NOT NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=5575 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -586,38 +584,13 @@ CREATE TABLE paper (
   id int(11) NOT NULL auto_increment,
   edition int(11) NOT NULL default '0',
   news text NOT NULL,
-  title varchar(100) NOT NULL default '',
-  `by` varchar(40) NOT NULL default '',
+  title varchar(100) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
   `date` datetime NOT NULL default '0000-00-00 00:00:00',
   align enum('Left','Right') NOT NULL default 'Left',
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=48 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `points`
--- 
-
-CREATE TABLE points (
-  id int(11) NOT NULL auto_increment,
-  owner char(40) NOT NULL default '',
-  send_intrest int(11) NOT NULL default '0',
-  location enum('London','New York','Beijing','Rome','Moscow','Bogota') NOT NULL default 'London',
-  profit int(100) NOT NULL default '0',
-  PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `points2`
--- 
-
-CREATE TABLE points2 (
-  id int(11) NOT NULL auto_increment,
-  PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -627,50 +600,14 @@ CREATE TABLE points2 (
 
 CREATE TABLE pointstransfers (
   id int(11) NOT NULL auto_increment,
-  `to` char(40) NOT NULL default '',
-  `from` char(40) NOT NULL default '',
-  amount int(100) NOT NULL default '0',
+  userid int(11) NOT NULL,
+  username varchar(50) NOT NULL,
+  fromid int(11) NOT NULL,
+  fromusername varchar(50) NOT NULL,
+  amount int(11) NOT NULL default '0',
   `date` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `polls`
--- 
-
-CREATE TABLE polls (
-  id int(11) NOT NULL auto_increment,
-  title text NOT NULL,
-  op1 varchar(40) NOT NULL default '',
-  op2 varchar(40) NOT NULL default '',
-  op3 varchar(40) NOT NULL default '',
-  op4 varchar(40) NOT NULL default '',
-  op5 varchar(40) NOT NULL default '',
-  v1 int(6) NOT NULL default '0',
-  v2 int(6) NOT NULL default '0',
-  v3 int(6) NOT NULL default '0',
-  v4 int(6) NOT NULL default '0',
-  v5 int(6) NOT NULL default '0',
-  PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=112 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `pts`
--- 
-
-CREATE TABLE pts (
-  id int(11) NOT NULL auto_increment,
-  owner char(40) NOT NULL default '',
-  send_intrest int(11) NOT NULL default '0',
-  location enum('England','Japan','Colombia','Usa','South Africa','Mexico') NOT NULL default 'England',
-  profit int(100) NOT NULL default '0',
-  PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
-
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 -- --------------------------------------------------------
 
 -- 
@@ -678,13 +615,14 @@ CREATE TABLE pts (
 -- 
 
 CREATE TABLE race (
-  id int(11) NOT NULL default '0',
-  owner varchar(100) NOT NULL default '',
-  max int(11) NOT NULL default '0',
-  location enum('London','New York','Beijing','Moscow','Rome','Bogota') NOT NULL default 'London',
-  profit int(11) NOT NULL default '0',
+  id int(11) NOT NULL auto_increment,
+  ownerid int(11) NOT NULL default 1,
+  ownerusername varchar(50) NOT NULL default 'ASCII',
+  `max` int(11) NOT NULL default 0,
+  location tinyint(1) NOT NULL default 1,
+  profit int(11) NOT NULL default 1,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -694,14 +632,15 @@ CREATE TABLE race (
 
 CREATE TABLE replys (
   id int(11) NOT NULL auto_increment,
-  username varchar(100) NOT NULL default '',
+  userid int(11) NOT NULL,
+  username varchar(50) NOT NULL,
   `text` text NOT NULL,
   forum varchar(250) NOT NULL default 'main',
-  idto varchar(100) NOT NULL default '',
+  idto varchar(100) NOT NULL,
   made datetime NOT NULL default '0000-00-00 00:00:00',
-  crew varchar(100) NOT NULL default '',
+  crew varchar(100) NOT NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2057 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -711,13 +650,20 @@ CREATE TABLE replys (
 
 CREATE TABLE rest (
   id int(11) NOT NULL auto_increment,
-  owner varchar(40) NOT NULL default '',
+  ownerid int(11) NOT NULL default 1,
+  ownerusername varchar(50) NOT NULL default 'ASCII',
   prices varchar(100) NOT NULL default '0-0-0-0-0-0-0-0-0',
-  location enum('London','New York','Beijing','Rome','Moscow','Bogota') NOT NULL default 'London',
-  profit int(50) NOT NULL default '0',
+  location tinyint(1) NOT NULL default 1,
+  profit int(11) NOT NULL default 1,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+INSERT INTO `rest` (`location`) VALUES (1);
+INSERT INTO `rest` (`location`) VALUES (2);
+INSERT INTO `rest` (`location`) VALUES (3);
+INSERT INTO `rest` (`location`) VALUES (4);
+INSERT INTO `rest` (`location`) VALUES (5);
+INSERT INTO `rest` (`location`) VALUES (6);
 -- --------------------------------------------------------
 
 -- 
@@ -726,11 +672,12 @@ CREATE TABLE rest (
 
 CREATE TABLE safe (
   id int(11) NOT NULL auto_increment,
-  username varchar(40) NOT NULL default '',
-  `time` varchar(100) NOT NULL default '',
-  location varchar(40) NOT NULL default '',
+  userid int(11) NOT NULL,
+  username varchar(50) NOT NULL,
+  `time` varchar(100) NOT NULL,
+  location varchar(40) NOT NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=229 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -740,16 +687,17 @@ CREATE TABLE safe (
 
 CREATE TABLE search (
   id int(11) NOT NULL auto_increment,
-  username varchar(40) NOT NULL default '',
-  target varchar(40) NOT NULL default '',
-  `time` varchar(100) NOT NULL default '',
+  userid int(11) NOT NULL,
+  username varchar(50) NOT NULL,
+  targetid varchar(11) NOT NULL,
+  targetusername varchar(50) NOT NULL,
+  `time` datetime NOT NULL default '0000:00:00 00:00:00',
   `status` enum('0','1','2') NOT NULL default '0',
-  location varchar(100) NOT NULL default '',
+  location tinyint(1) NOT NULL,
   expired datetime NOT NULL default '0000-00-00 00:00:00',
-  nextshot varchar(255) NOT NULL default '',
-  8hrends varchar(255) NOT NULL default '',
+  nextshot varchar(255) NOT NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=9962 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -759,12 +707,19 @@ CREATE TABLE search (
 
 CREATE TABLE shop (
   id int(11) NOT NULL auto_increment,
-  owner char(40) NOT NULL default '',
-  location enum('London','New York','Beijing','Rome','Moscow','Bogota') NOT NULL default 'London',
-  profit int(40) NOT NULL default '0',
+  ownerid int(11) NOT NULL default 1,
+  ownerusername varchar(50) NOT NULL default 'ASCII',
+  location tinyint(1) NOT NULL default 1,
+  profit int(11) NOT NULL default 1,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
+INSERT INTO `shop` (`location`) VALUES (1);
+INSERT INTO `shop` (`location`) VALUES (2);
+INSERT INTO `shop` (`location`) VALUES (3);
+INSERT INTO `shop` (`location`) VALUES (4);
+INSERT INTO `shop` (`location`) VALUES (5);
+INSERT INTO `shop` (`location`) VALUES (6);
 -- --------------------------------------------------------
 
 -- 
@@ -773,17 +728,17 @@ CREATE TABLE shop (
 
 CREATE TABLE site_stats (
   id int(11) NOT NULL auto_increment,
-  online int(11) NOT NULL default '0',
+  online int(11) NOT NULL default 0,
   CS enum('0','1') NOT NULL default '0',
-  bullets varchar(100) NOT NULL default '',
-  terr varchar(100) NOT NULL default '',
-  stock varchar(40) NOT NULL default '1',
-  newstockp varchar(40) NOT NULL default '',
-  oldstockp varchar(40) NOT NULL default '',
-  stime varchar(40) NOT NULL default '',
+  bullets varchar(100) NOT NULL,
+  terr varchar(100) NOT NULL,
+  stock varchar(40) NOT NULL default 0,
+  newstockp varchar(40) NOT NULL,
+  oldstockp varchar(40) NOT NULL,
+  stime varchar(40) NOT NULL,
   PRIMARY KEY  (id),
   FULLTEXT KEY stock (stock,newstockp,oldstockp)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -793,17 +748,19 @@ CREATE TABLE site_stats (
 
 CREATE TABLE street (
   id int(11) NOT NULL auto_increment,
-  leader varchar(40) NOT NULL default '',
-  leader_car varchar(40) NOT NULL default '',
+  leaderid int(11) NOT NULL,
+  leaderusername varchar(50) NOT NULL,
+  leader_car int(11) NOT NULL,
   prize enum('Car','Money') NOT NULL default 'Car',
-  prize_win int(11) NOT NULL default '0',
-  op_car int(11) NOT NULL default '0',
-  op_ready varchar(10) NOT NULL default '',
-  op_username varchar(40) NOT NULL default '',
-  op_invite varchar(40) NOT NULL default '',
-  location varchar(40) NOT NULL default '',
+  prize_win int(11) NOT NULL default 0,
+  op_car int(11) NOT NULL default 0,
+  op_ready varchar(10) NOT NULL,
+  op_userid int(11) NOT NULL,
+  op_username varchar(50) NOT NULL,
+  op_invite varchar(40) NOT NULL,
+  location varchar(40) NOT NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=801 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -817,7 +774,7 @@ CREATE TABLE swiss (
   pin int(32) NOT NULL default '0',
   money int(32) NOT NULL default '0',
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1159 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -826,40 +783,19 @@ CREATE TABLE swiss (
 -- 
 
 CREATE TABLE ticket (
-  id int(32) NOT NULL auto_increment,
-  title varchar(100) NOT NULL default '',
-  description varchar(250) NOT NULL default '',
-  answer varchar(250) NOT NULL default '',
+  id int(11) NOT NULL auto_increment,
+  title varchar(40) NOT NULL,
+  description longtext NOT NULL,
+  answer longtext NOT NULL,
   `open` int(32) NOT NULL default '0',
-  started varchar(100) NOT NULL default '',
+  started varchar(100) NOT NULL,
   bug enum('0','1') NOT NULL default '0',
   `on` datetime NOT NULL default '0000-00-00 00:00:00',
   answered_by varchar(40) NOT NULL default '0',
   `status` enum('Pending','Fixed') NOT NULL default 'Pending',
   cat enum('Crimes','Casinos','Money','Street Races','OC','Getaway','Other') NOT NULL default 'Crimes',
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=910 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `ticket2`
--- 
-
-CREATE TABLE ticket2 (
-  id int(32) NOT NULL auto_increment,
-  title varchar(100) NOT NULL default '',
-  description varchar(250) NOT NULL default '',
-  answer varchar(250) NOT NULL default '',
-  `open` int(32) NOT NULL default '0',
-  started varchar(100) NOT NULL default '',
-  bug enum('0','1') NOT NULL default '0',
-  `on` datetime NOT NULL default '0000-00-00 00:00:00',
-  answered_by varchar(40) NOT NULL default '0',
-  `status` enum('Pending','Fixed') NOT NULL default 'Pending',
-  cat enum('Crimes','Casinos','Money','Street Races','OC','Getaway','Other') NOT NULL default 'Crimes',
-  PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=117 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -873,7 +809,7 @@ CREATE TABLE to_do (
   done enum('0','1') NOT NULL default '0',
   id int(10) NOT NULL auto_increment,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -883,18 +819,19 @@ CREATE TABLE to_do (
 
 CREATE TABLE topics (
   id int(11) NOT NULL auto_increment,
-  username varchar(100) NOT NULL default '',
-  title varchar(100) NOT NULL default '',
-  topictext text NOT NULL,
+  userid int(11) NOT NULL,
+  username varchar(50) NOT NULL,
+  title varchar(100) NOT NULL,
+  topictext longtext NOT NULL,
   forum varchar(250) NOT NULL default 'main',
   locked enum('0','1') NOT NULL default '0',
   important enum('0','1') NOT NULL default '0',
   sticky enum('0','1') NOT NULL default '0',
-  lastreply varchar(100) NOT NULL default '',
+  lastreply varchar(100) NOT NULL,
   made datetime NOT NULL default '0000-00-00 00:00:00',
-  crew varchar(100) NOT NULL default '',
+  crew varchar(100) NOT NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=837 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -904,27 +841,14 @@ CREATE TABLE topics (
 
 CREATE TABLE transfers (
   id int(11) NOT NULL auto_increment,
-  `to` char(40) NOT NULL default '',
-  `from` char(40) NOT NULL default '',
-  amount int(100) NOT NULL default '0',
+  toid int(11) NOT NULL,
+  tousername varchar(50) NOT NULL,
+  fromid int(11) NOT NULL,
+  fromusername varchar(50) NOT NULL,
+  amount int(11) NOT NULL default '0',
   `date` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1933 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `turf`
--- 
-
-CREATE TABLE turf (
-  id int(11) NOT NULL auto_increment,
-  location char(40) NOT NULL default '',
-  owner char(60) NOT NULL default '',
-  profit int(11) NOT NULL default '0',
-  damage int(3) NOT NULL default '0',
-  PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=235 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -934,11 +858,12 @@ CREATE TABLE turf (
 
 CREATE TABLE updates (
   id int(32) NOT NULL auto_increment,
-  username varchar(100) NOT NULL default '',
+  userid int(11) NOT NULL,
+  username varchar(50) NOT NULL,
   `update` text NOT NULL,
   `time` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -948,31 +873,31 @@ CREATE TABLE updates (
 
 CREATE TABLE user_info (
   id int(11) NOT NULL auto_increment,
-  username varchar(40) NOT NULL default '',
-  crimes int(100) NOT NULL default '0',
-  gtas int(100) NOT NULL default '0',
-  busts int(100) NOT NULL default '0',
+  userid int(11) NOT NULL,
+  username varchar(50) NOT NULL,
+  crimes int(11) NOT NULL default '0',
+  gtas int(11) NOT NULL default '0',
+  busts int(11) NOT NULL default '0',
   get_aways int(11) NOT NULL default '0',
-  food_crimes int(40) NOT NULL default '0',
+  food_crimes int(11) NOT NULL default '0',
   ocs int(11) NOT NULL default '0',
   kill_skill int(11) NOT NULL default '0',
   wl varchar(40) NOT NULL default '0:0',
-  exp int(3) NOT NULL default '0',
+  exp int(5) NOT NULL default '0',
   `level` int(11) NOT NULL default '0',
-  last_train varchar(100) NOT NULL default '',
-  jewl varchar(40) NOT NULL default '',
-  foot varchar(40) NOT NULL default '',
+  last_train datetime NOT NULL default '0000:00:00 00:00:00',
+  jewl varchar(40) NOT NULL,
+  foot varchar(40) NOT NULL,
   jail_able enum('0','1') NOT NULL default '0',
-  last_bribe varchar(100) NOT NULL default '',
-  jail_untill varchar(100) NOT NULL default '',
-  lang enum('English','Dutch') NOT NULL default 'English',
+  last_bribe datetime NOT NULL default '0000:00:00 00:00:00',
+  jail_untill datetime NOT NULL default '0000:00:00 00:00:00',
   respect int(11) NOT NULL default '0',
   respect_rec varchar(11) NOT NULL default '0',
-  last_respect varchar(100) NOT NULL default '',
+  last_respect datetime NOT NULL default '0000:00:00 00:00:00',
   mem_gym enum('0','1') NOT NULL default '0',
   dealing int(11) NOT NULL default '0',
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=5266 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -981,98 +906,101 @@ CREATE TABLE user_info (
 -- 
 
 CREATE TABLE users (
-  id int(11) NOT NULL auto_increment,
-  username varchar(40) NOT NULL default '',
+  id int(11) NOT NULL,
+  username varchar(50) NOT NULL,
   gender varchar(60) NOT NULL default '<b>Unknown</b>',
-  `password` varchar(60) NOT NULL default '',
-  activated enum('0','1') NOT NULL default '0',
-  money varchar(100) NOT NULL default '1000',
-  online varchar(100) NOT NULL default '',
+  money int(11) NOT NULL default '1000',
+  online datetime NOT NULL default '0000:00:00 00:00:00',
   crimechance varchar(100) NOT NULL default '0-0-0-0-0-0-0',
-  lastcrime varchar(100) NOT NULL default '',
+  lastcrime datetime NOT NULL default '0000:00:00 00:00:00',
   rankpoints int(11) NOT NULL default '0',
-  userlevel enum('0','1','2','3','4') NOT NULL default '0',
-  lasttop varchar(100) NOT NULL default '',
+  userlevel int(6) NOT NULL default '0',
+  lasttop varchar(100) NOT NULL,
   `status` enum('Alive','Dead','Banned') NOT NULL default 'Alive',
-  regged datetime NOT NULL default '0000-00-00 00:00:00',
-  rank enum('Scum','Tramp','Chav','Vandal','Mobster','Hitman','Agent','Boss','Assassin','Godfather','Global Threat','World Dominator','Untouchable Godfather','Legend','Official Bliss Godfather') NOT NULL default 'Scum',
-  layout varchar(100) NOT NULL default '17',
-  email varchar(100) NOT NULL default '',
-  quote text NOT NULL,
+  regged datetime NOT NULL default '0000:00:00 00:00:00',
+  rank int(2) NOT NULL default 1,
+  quote longtext NOT NULL,
   image varchar(100) NOT NULL default 'images/default.jpg',
-  location enum('London','New York','Beijing','Rome','Moscow','Bogota') NOT NULL default 'London',
+  location tinyint(1) NOT NULL default 1,
   bullets int(11) NOT NULL default '0',
   gtachance varchar(100) NOT NULL default '0-0-0',
-  lastgta varchar(100) NOT NULL default '',
-  lasttravel varchar(100) NOT NULL default '',
-  bank int(40) NOT NULL default '0',
-  banktime varchar(100) NOT NULL default '',
-  last_race varchar(100) NOT NULL default '',
+  lastgta datetime NOT NULL default '0000:00:00 00:00:00',
+  lasttravel datetime NOT NULL default '0000:00:00 00:00:00',
+  bank int(11) NOT NULL default '0',
+  banktime varchar(100) NOT NULL,
+  last_race datetime NOT NULL default '0000:00:00 00:00:00',
   street enum('0','1') NOT NULL default '0',
   music tinytext NOT NULL,
-  poll varchar(10) NOT NULL default '0',
-  crew varchar(60) NOT NULL default '0',
-  get_away_time varchar(100) NOT NULL default '',
+  crewid int(11) NOT NULL default '0',
+  crewname varchar(50) NOT NULL default '0',
+  get_away_time datetime NOT NULL default '0000:00:00 00:00:00',
   get_away enum('0','1') NOT NULL default '0',
   health int(3) NOT NULL default '100',
-  energy int(3) NOT NULL default '2147483647',
-  last_ext varchar(100) NOT NULL default '',
-  lasttran varchar(100) NOT NULL default '',
+  last_ext datetime NOT NULL default '0000:00:00 00:00:00',
+  lasttran datetime NOT NULL default '0000:00:00 00:00:00',
   drugprices varchar(100) NOT NULL default '0-0-0-0-0',
   drugs varchar(100) NOT NULL default '0-0-0-0-0',
-  l_ip varchar(15) NOT NULL default '127.0.0.1',
-  r_ip varchar(15) NOT NULL default '',
+  l_ip varchar(255) NOT NULL default '127.0.0.1',
+  r_ip varchar(255) NOT NULL,
   crew_invite int(11) NOT NULL default '0',
   referral int(11) NOT NULL default '0',
   weapon enum('None','FiveSeven','Shotgun','PSG1','M82A1','M16','Liquidx Cannon') NOT NULL default 'None',
-  mission int(11) NOT NULL default '1',
+  mission int(2) NOT NULL default '1',
   points int(11) NOT NULL default '0',
-  lpv varchar(32) NOT NULL default '',
-  page varchar(10) NOT NULL default '',
   editor enum('0','1') NOT NULL default '0',
   helper enum('0','1') NOT NULL default '0',
   ghostmode enum('0','1') NOT NULL default '0',
   forumm enum('0','1') NOT NULL default '0',
   food_chance varchar(100) NOT NULL default '0-0-0',
-  last_food varchar(100) NOT NULL default '',
-  last_order varchar(100) NOT NULL default '',
-  freinds varchar(40) NOT NULL default 'None',
+  last_food datetime NOT NULL default '0000:00:00 00:00:00',
+  last_order datetime NOT NULL default '0000:00:00 00:00:00',
+  friends varchar(40) NOT NULL default 'None',
   protection enum('None','Knife','Bullet Vest','Armoured Car','Body Double','Bunker') NOT NULL default 'None',
   plane enum('None','Microlight','Small Plane','Boeing 747','Concord','Private Jet') NOT NULL default 'None',
   married varchar(100) NOT NULL default '0',
-  last_oc varchar(100) NOT NULL default '',
+  last_oc datetime NOT NULL default '0000:00:00 00:00:00',
   atm enum('False','True') NOT NULL default 'False',
-  last_bank varchar(100) NOT NULL default '',
-  last_attempted varchar(100) NOT NULL default '',
-  last_kill varchar(100) NOT NULL default '',
+  last_bank datetime NOT NULL default '0000:00:00 00:00:00',
+  last_attempted datetime NOT NULL default '0000:00:00 00:00:00',
+  last_kill datetime NOT NULL default '0000:00:00 00:00:00',
   ver_code varchar(20) NOT NULL default '456',
-  last_script_check varchar(100) NOT NULL default '',
+  last_script_check datetime NOT NULL default '0000:00:00 00:00:00',
   `global` enum('0','1') NOT NULL default '0',
   clicks int(11) NOT NULL default '0',
-  click_rate varchar(100) NOT NULL default '',
+  click_rate varchar(100) NOT NULL,
   tut enum('0','1') NOT NULL default '0',
-  drugs_from varchar(40) NOT NULL default '',
+  drugs_from varchar(40) NOT NULL,
   total_drugs_mission int(11) NOT NULL default '0',
   city enum('Cambridgeshire','Hull','Leeds','Leicester','Liverpool','London','Chiba','Fujiyoshida','Kawasaki','Sapporo','Yokohama','Nagoya','New York','Arizona','Texas','Utah','Vermont','Washington DC','Alberton','Benoni','Cape Town','Carltonville','East London','Johannesburg','Acapulco','Aguascalientes','Lake Chapala','San Carlos','Monterrey','Tuxtla') NOT NULL default 'Cambridgeshire',
   notes text NOT NULL,
-  last_chase varchar(100) NOT NULL default '',
+  last_chase datetime NOT NULL default '0000:00:00 00:00:00',
   choice varchar(40) NOT NULL default '0',
   bar enum('1','2') NOT NULL default '1',
   backfire int(11) NOT NULL default '0',
   stock varchar(200) NOT NULL default '0',
   donate enum('1','2') NOT NULL default '1',
   bj varchar(100) NOT NULL default '0',
-  hdo_stat varchar(100) NOT NULL default '',
-  flowers varchar(100) NOT NULL default '',
+  hdo_stat varchar(100) NOT NULL,
+  flowers varchar(100) NOT NULL,
   oc enum('0','1') NOT NULL default '0',
   octime varchar(100) NOT NULL default '0',
   ocleader enum('No','Yes') NOT NULL default 'No',
   ocid int(32) NOT NULL default '0',
-  ocpost enum('','Weapons Expert','Explosives Expert','Driver') NOT NULL default '',
+  ocpost enum('','Weapons Expert','Explosives Expert','Driver') NOT NULL,
   ocstatus enum('Not Ready','Ready') NOT NULL default 'Not Ready',
   apply varchar(250) NOT NULL default '0',
-  bullettime varchar(100) NOT NULL default '',
-  lastbuy varchar(100) NOT NULL default '0',
+  bullettime varchar(100) NOT NULL,
+  lastbuy datetime NOT NULL default '0000:00:00 00:00:00',
   PRIMARY KEY  (id),
   UNIQUE KEY user_idx (username)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=4250 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE users_master (
+  id int(11) NOT NULL auto_increment,
+  email varchar(255) NOT NULL,
+  password varchar(32) NOT NULL,
+  userlevel int(5) NOT NULL default 0,
+  activated enum('0','1') NOT NULL default '0',
+  r_ip varchar(255) NOT NULL default '127.0.0.1',
+  PRIMARY KEY (id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
