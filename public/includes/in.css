@@ -1,0 +1,57 @@
+body,td,th {
+	font-family: Veneva, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+}
+bold {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+        font-weight: bold
+ 	}
+
+
+body  { 
+	color: #ffffff;
+	font-family: Verdana;
+	background-color: #555555;
+	scrollbar-face-color: #666666; 
+	scrollbar-shadow-color: #999999; 
+	scrollbar-highlight-color: #999999; 
+	scrollbar-3dlight-color: #999999; 
+	scrollbar-darkshadow-color: #999999; 
+	scrollbar-track-color: #000000; 
+	scrollbar-arrow-color: #000000; 
+
+
+font-size: 10px; }
+
+td.header  {  
+  font-size: 10px;  
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: #555555;
+  background-image: url(grad.jpg);
+
+ }
+td.tip  {  
+  font-size: 10px;  
+font-family: Geneva, Arial, Helvetica, sans-serif;
+  color: #555555;
+
+ }
+
+   
+a{text-decoration:none; color:white; font-size: 12px;}
+a:link{text-decoration:none; color:white; font-size: 12px;}
+a:visited{text-decoration:none; color:white; font-size: 12px;}
+a:hover{text-decoration:underline; color:red; font-size: 12px;}
+a:active{text-decoration:none color:white; font-size: 12px;}
+
+input.submit{
+	
+	font-size: 10px;
+	color: #ffffff;
+	background-color: #555555;
+	border-style: solid;
+	border-color: #FFFFFF;
+	border-width: 2px;

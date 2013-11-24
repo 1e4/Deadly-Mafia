@@ -1,0 +1,18 @@
+.title {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.menutext {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: 2px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #990000;
+	word-spacing: normal;
+}

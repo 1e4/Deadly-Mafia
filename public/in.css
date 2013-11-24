@@ -1,0 +1,72 @@
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+}
+bold {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #ffffff;
+        font-weight: bold
+ 	}
+
+
+body  { 
+	color: #FFFFFF;
+	font-family: Verdana;
+	background-color:black;
+	scrollbar-face-color: #333333; 
+	scrollbar-shadow-color: #ffffff; 
+	scrollbar-highlight-color: #ffffff; 
+	scrollbar-3dlight-color: #ffffff; 
+	scrollbar-darkshadow-color: #000000; 
+	scrollbar-track-color: #333333; 
+	scrollbar-arrow-color: #000000; 
+
+
+font-size: 10px; }
+
+td.header  {  
+  font-size: 10px;  
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: #FFFFFF;
+  background-image: url(grad.jpg);
+
+ }
+td.tip  {  
+  font-size: 10px;  
+font-family: Verdana;
+  color: #ffffff;
+
+ }
+
+   
+a{text-decoration:none; color:white; font-size: 10px;}
+a:link{text-decoration:none; color:white; font-size: 10px;}
+a:visited{text-decoration:none; color:white; font-size: 10px;}
+a:hover{text-decoration:underline; color:white; font-size: 10px;}
+a:active{text-decoration:none color:black; font-size: 10px;}
+
+input.submit{
+	
+	font-size: 10px;
+	color: black;
+	background-color: #EFEFEF;
+	border-style: solid;
+	border-color: white;
+	border-width: 1px;
+	
+}
+table.thinline {
+   border-collapse:collapse;
+   border:1px solid #ffffff;
+   align:center;
+   margin-left:auto;
+   margin-right:auto;
+   background-color: #666666;
+   font-size: 10px;
+   font-color: red;
+	
+
+  
+}

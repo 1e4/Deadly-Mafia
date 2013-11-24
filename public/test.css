@@ -1,0 +1,181 @@
+a:link {color: #ffffff; text-decoration: none;}
+a:active {color: #ffffff; text-decoration: none;}
+a:visited {color: #ffffff; text-decoration: none;}
+a:hover {color: #cccccc; text-decoration: none; cursor: pointer}
+a.menu:link {font: 10px verdana; color: #ffffff; text-decoration: none;}
+a.menu:active {font: 10px verdana; color: #ffffff; text-decoration: none;}
+a.menu:visited {font: 10px verdana; color: #ffffff; text-decoration: none;}
+a.menu:hover {font: 10px verdana; color: #cccccc; text-decoration: none; cursor: pointer}
+a.admin:link {font: 10px verdana; color: #ff8080; text-decoration: none;}
+a.admin:active {font: 10px verdana; color: #ff0000; text-decoration: none;}
+a.admin:visited {font: 10px verdana; color: #ff8080; text-decoration: none;}
+a.admin:hover {font: 10px verdana; color: #ff4040; text-decoration: none; cursor: pointer}
+a.mod:link {font: 10px verdana; color: #a0ffa0; text-decoration: none;}
+a.mod:active {font: 10px verdana; color: #a0ffa0; text-decoration: none;}
+a.mod:visited {font: 10px verdana; color: #a0ffa0; text-decoration: none;}
+a.mod:hover {font: 10px verdana; color: #cccccc; text-decoration: none; cursor: pointer}
+a.hdo:link {font: 10px verdana; color: #ffffa0; text-decoration: none;}
+a.hdo:active {font: 10px verdana; color: #ffff00; text-decoration: none;}
+a.hdo:visited {font: 10px verdana; color: #ffffa0; text-decoration: none;}
+a.hdo:hover {font: 10px verdana; color: #ffff40; text-decoration: none; cursor: pointer}
+a.player:link {font: 10px verdana; color: #ffffff; text-decoration: none;}
+a.player:active {font: 10px verdana; color: #808080; text-decoration: none;}
+a.player:visited {font: 10px verdana; color: #ffffff; text-decoration: none;}
+a.player:hover {font: 10px verdana; color: #cccccc; text-decoration: none; cursor: pointer}
+a.friend:link {font: 10px verdana; color: #f8bc53; text-decoration: none;}
+a.friend:active {font: 10px verdana; color: #ffa010; text-decoration: none;}
+a.friend:visited {font: 10px verdana; color: #f8bc53; text-decoration: none;}
+a.friend:hover {font: 10px verdana; color: #ffa010; text-decoration: none; cursor: pointer}
+a.block:link {font: 10px verdana; color: #808080; text-decoration: none;}
+a.block:active {font: 10px verdana; color: #c0c0c0; text-decoration: none;}
+a.block:visited {font: 10px verdana; color: #808080; text-decoration: none;}
+a.block:hover {font: 10px verdana; color: #c0c0c0; text-decoration: none; cursor: pointer}
+a.anon:link {font: 10px verdana; color: #a0a0ff; text-decoration: none;}
+a.anon:active {font: 10px verdana; color: #0000ff; text-decoration: none;}
+a.anon:visited {font: 10px verdana; color: #a0a0ff; text-decoration: none;}
+a.anon:hover {font: 10px verdana; color: #4040ff; text-decoration: none; cursor: pointer}
+a.faq:link {font: 15px verdana; color: #ffffff; font-weight: bold;}
+a.faq:active {font: 15px verdana; color: #ffffff; font-weight: bold;}
+a.faq:visited {font: 15px verdana; color: #ffffff; font-weight: bold;}
+a.faq:hover {font: 15px verdana; color: #c0ffc0; font-weight: bold; cursor: pointer}
+.coladmin {color: #ff8080;}
+.colmod {color: #a0ffa0;}
+.colhdo {color: #ffffa0;}
+.colfriend {color: #F8BC53;}
+.colblock {color: #808080;}
+body {font: 10px verdana; color: #ffffff; background-color: #000000; margin: 5px 5px 5px 5px; cursor: default;}
+td {font: 10px verdana; color: #ffffff;}
+hr {width: 100%; color: #800000;}
+.faqhdr {font: 15px verdana; color: #ffffff; font-weight: bold;}
+.faqhelp {border-bottom: 1px dotted #ff0000;}
+.playarea {font: 10px verdana; color: #ffffff; background-color: #000000;}
+.btext {font: 10px verdana; color: #ffffff; background-color: #303030; border: 1px; border-style: solid; border-color: #000000; padding-left: 3px; padding-right: 3px;}
+.btextc {font: 10px verdana; color: #ffffff; background-color: #303030; border: 1px; border-style: solid; border-color: #000000; padding-left: 3px; padding-right: 3px; text-align: center;}
+.btextj {font: 10px verdana; color: #ffffff; background-color: #400000; border: 1px; border-style: solid; border-color: #000000; padding-left: 3px; padding-right: 3px; text-align: justify;}
+.btextr {font: 10px verdana; color: #ffffff; background-color: #400000; border: 1px; border-style: solid; border-color: #000000; padding-left: 3px; padding-right: 3px; text-align: right;}
+.infotxt {font: 10px verdana; color: #ffffff; text-align: center;}
+.title {font-size: 25px; font-family: verdana; color: #ffffff; text-align: right; font-weight: bold;}
+.btexti {font: 12px verdana; color: #808000;}
+.textbox {background-color: #FFFFFF; color: #404040; border-left: 1px solid #ffffff; border-right: 1px solid #ffffff; border-top: 1px solid #ffffff; border-bottom: 1px solid #ffffff; font-size: 10px; font-weight: bold; font-family: verdana; padding-left: 3px; padding-right: 3px;}
+.button {background-color: #303030; color: #ffffff; cursor: pointer; border-left: 1px solid #ffffff; border-right: 1px solid #ffffff; border-top: 1px solid #ffffff; border-bottom: 1px solid #ffffff; font-size: 10px; font-weight: bold; font-family: verdana;}
+
+.tblout {border: 1px; border-style: solid; border-color: #aaaaaa;}
+.tblin {font-size: 11px; padding: 1px; border-style: solid; border-color: #000000; border-width: 0px 0px 0px 0px; color: #ffffff;}
+.tblhdr {color: #373737; text-align: center; border: 1px solid #000000; font-size: 11px; padding: 1px; background-image: url("bgstrip.gif"); background-color: #AAAAAA; font-weight: bold;}
+
+.tblhdrl {text-align: left; border: 1px solid #000000; font-size: 11px; padding: 1px; background-image: url("bgstrip.gif"); background-color: #AAAAAA; font-weight: bold;}
+.gtblout {border: 1px; border-style: solid; border-color: #a0a0a0;}
+
+/*Mail box unread messages*/
+.unread {font: 10px verdana; color: #d0d0d0; background-color: #717171; border: 1px; border-style: solid; border-color: #000000; padding-left: 3px; padding-right: 3px;}
+
+
+.ctext {font: 10px verdana; color: #d0d0d0; background-color: #303030; border: 1px; border-style: solid; border-color: #000000; padding-left: 3px; padding-right: 3px;}
+.gtext {font: 10px verdana; color: #ffffff; background-color: #303030; border: 1px; border-style: solid; border-color: #000000; padding-left: 3px; padding-right: 3px;}
+.gtextc {font: 10px verdana; color: #ffffff; background-color: #303030; border: 1px; border-style: solid; border-color: #000000; padding-left: 3px; padding-right: 3px; text-align: center;}
+.gtextj {font: 10px verdana; color: #ffffff; background-color: #303030; border: 1px; border-style: solid; border-color: #000000; padding-left: 3px; padding-right: 3px; text-align: justify;}
+.gtextr {font: 10px verdana; color: #ffffff; background-color: #303030; border: 1px; border-style: solid; border-color: #000000; padding-left: 3px; padding-right: 3px; text-align: right;}
+
+.subhdr {font: 10px verdana; color: #c0c0c0; background-color: #600000; text-align: center; border: 1px solid #000000;}
+.gsubhdr {font: 10px verdana; color: #c0c0c0; background-color: #600000; text-align: center; border: 1px solid #000000;}
+.warn {font: 10px verdana; color: #ff0000; font-weight: bold;}
+
+
+
+/* FORUMS/INBOX/BB-CODES */
+
+* {
+	font: verdana;
+}
+
+a.reply:link {color: #c0c0c0; text-decoration: none; font: 10px verdana; }
+a.reply:visited {color: #c0c0c0; text-decoration: none; font: 10px verdana; }
+a.reply:hover {color: #ffffff; text-decoration: none; cursor: pointer; font: 10px verdana; }
+
+a.aux:link {color: #ffffff; text-decoration: none; font: 10px verdana; }
+a.aux:visited {color: #ffffff; text-decoration: none; font: 10px verdana; }
+a.aux:hover {color: #ffffff; text-decoration: underline; cursor: pointer; font: 10px verdana; }
+
+span.aux {color: #ffffff; text-decoration: none; font: 10px verdana; }
+
+a.head:link {color: #303030; text-decoration: none; font-size: 11px;}
+a.head:visited {color: #303030; text-decoration: none; font-size: 11px;}
+a.head:hover {color: #303030; text-decoration: underline; cursor: pointer; font-size: 11px;}
+
+a.topic:link {color: #ffffff; text-decoration: none; font-size: 10px verdana;}
+a.topic:visited {color: #ffffff; text-decoration: none; font-size: 10px verdana;}
+a.topic:hover {color: #ffffff; text-decoration: underline; cursor: pointer; font-size: 10px verdana;}
+
+a.green:link {color: #cccccc; text-decoration: none; font-size: 10px;}
+a.green:visited {color: #cccccc; text-decoration: none; font-size: 10px;}
+a.green:hover {color: #cccccc; text-decoration: none; cursor: pointer; font-size: 10px;}
+
+a.red:link {color: red; text-decoration: none; font-size: 10px;}
+a.red:visited {color: red; text-decoration: none; font-size: 10px;}
+a.red:hover {color: red; text-decoration: none; cursor: pointer; font-size: 10px;}
+
+td.head {
+	text-align: left;
+	border: 1px solid #000000;
+	font-size: 11px;
+	padding: 1px;
+	background-image:  url(bgstrip.gif);
+	background-color: #cccccc;
+	font-weight: bold;
+	color: #303030;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.tblin {
+	font-size: 11px;
+	padding: 1px; 
+	border-style: solid; 
+	border-color: #000000; 
+	border-width: 0px 0px 0px 0px;
+	color: #ffffff;
+}
+
+.text {
+	font: 10px verdana; 
+	color: #ffffff; 
+	background-color: #303030; 
+	border: 1px; 
+	border-style: solid; 
+	border-color: #000000; 
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+
+.tblout {
+	border: 1px; 
+	border-style: solid; 
+	border-color: #aaaaaa;
+}
+
+td.inner_align {
+	border: 0px none #000000;
+	font-size: 11px;
+	padding: 1px;
+	background-image:  url(bgstrip.gif);
+	background-color: #cccccc;
+	font-weight: bold;
+	color: #303030;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+td.sub {
+	font: 10px verdana;
+	color: #c0c0c0; 
+	background-color: #600000; 
+	text-align: left; 
+	border: 1px solid #000000;
+}
+
+td.reply {
+	font: 10px verdana;
+	color: #c0c0c0; 
+	background-color: #606060; 
+	text-align: left; 
+	border: 1px solid #000000;
+}
