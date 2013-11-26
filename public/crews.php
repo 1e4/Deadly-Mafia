@@ -65,7 +65,7 @@ print"You left your crew";
 <head>
 <title>Untitled Document</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="includes/in.css" rel="stylesheet" type="text/css">
+
 
 
 </head>

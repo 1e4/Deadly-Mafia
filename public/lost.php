@@ -1,4 +1,4 @@
-<link href="includes/in.css" rel="stylesheet" type="text/css">
+
 <?php //module for password retrieval
  include_once 'includes/db_connect.php';
  if(isset($_POST['submit']) && $_POST['email'] && $_POST['user']) {

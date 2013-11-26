@@ -34,19 +34,19 @@ $fetch=mysql_fetch_object(mysql_query("SELECT * FROM users WHERE username='$user
 
 <frameset  rows="106,*" border="0">
 
-<frame name="littlebanner" src="Banner.html" marginwidth="2" marginheight="2" scrolling="no" frameborder="0">
+<frame name="littlebanner" src="banner.html" marginwidth="2" marginheight="2" scrolling="no" frameborder="0">
 
 
 
 <frameset  rows="30,*" border="0">
 
-<frame name="littlebanner1" src="min3i.php" marginwidth="2" marginheight="2" scrolling="no" frameborder="0">
+<frame name="littlebanner1" src="statbar.php" marginwidth="2" marginheight="2" scrolling="no" frameborder="0">
 
 
 
 <frameset  cols="173,*" border="1">
 
-<frame name="menu" src="Menu.php" marginwidth="0" marginheight="2" scrolling="auto" frameborder="0" noresize>
+<frame name="menu" src="menu.php" marginwidth="0" marginheight="2" scrolling="auto" frameborder="0" noresize>
 
 
 

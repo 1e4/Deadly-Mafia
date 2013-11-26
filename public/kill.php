@@ -361,7 +361,7 @@ echo "Searches are now out.";
 
 
 ?>
-<link href="includes/in.css" rel="stylesheet" type="text/css">
+
 
 
 <form name="form1" method="post" action="">

@@ -368,7 +368,7 @@ $arrayrates = array($chance[0], $chance[1], $chance[2]);
 <html><head>
 <title>Untitled Document</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link rel=stylesheet href=includes/in.css type=text/css>
+
 <style type="text/css">
 <!--
 body {

@@ -35,7 +35,7 @@ $owner=mysql_num_rows(mysql_query("SELECT * FROM crews WHERE boss='$username' OR
 
 
 $forum_look=$_GET['forum_look'];
-echo "<link rel=stylesheet href=includes/in.css type=text/css>";
+echo "";
 
 
 

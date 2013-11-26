@@ -2,7 +2,7 @@
 session_start(); 
 include_once "db_connect.php";
 $username=$_SESSION['username'];
-echo "<link rel=stylesheet href=includes/in.css type=text/css>";
+echo "";
 
 $query=mysql_query("SELECT * FROM users WHERE username='$username' LIMIT 1");
 $info = mysql_fetch_object($query);

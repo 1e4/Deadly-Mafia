@@ -175,17 +175,15 @@ echo "<tr>
 
               <a href="forum_frame.php?forum=main" target="main">&gt; Forum</a><br />
 
-              <a href="ff2.php?forum=off" target="main">&gt; OC Forum</a><br />
-
-              <a href="basic_table.php" target="main">&gt; Chat</a><br />
+              <a href="fforum_frame.php?forum=oc" target="main">&gt; OC Forum</a><br />
 
               <a href="ticket.php" target="main">&gt; Help Desk</a><br />
 
-			  <a href="hdo_stats.php" target="main">&gt; HDOP Statistics</a><br />
+                <a href="hdo_stats.php" target="main">&gt; HDOP Statistics</a><br />
 
               <a href="oeticket.php" target="main">&gt; HDOP Corner</a><br />
 
-              <a href="crewforum.php" target="main">&gt; Crew Forum</a><br />
+              <a href="forum_frame.php?forum=main" target="main">&gt; Crew Forum</a><br />
 
 			  
 
@@ -239,7 +237,7 @@ echo "<tr>
                 
            		<a href="buy.php" target="main">&gt; Blackmarket</a><br />
 
-                <a href="sauctions.php" target="main">&gt; Bidding Center</a><br />
+                <a href="auctions.php" target="main">&gt; Bidding Center</a><br />
 
                 <a href="garage.php" target="main">&gt; Garage</a><br />
 

@@ -67,7 +67,7 @@ mysql_query("UPDATE users SET l_ip='$ip' WHERE username='$username'");
 <title>.:Deadly Mafia:.</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
-<link href="includes/in.css" rel="stylesheet" type="text/css">
+
 <style type="text/css">
 <!--
 a:link  { 

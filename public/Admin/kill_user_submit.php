@@ -35,7 +35,7 @@ echo "$kill_username Is Now Dead!";
 }
 ?>
 
-<link href="includes/in.css" rel="stylesheet" type="text/css">
+
 
 
 <form name="form1" method="post" action="">

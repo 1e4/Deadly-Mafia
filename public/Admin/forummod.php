@@ -69,7 +69,7 @@ echo "$kill_username Is Now a Forum MOD!";
 
 
 
-<link href="includes/in.css" rel="stylesheet" type="text/css">
+
 
 
 

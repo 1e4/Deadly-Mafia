@@ -1,6 +1,6 @@
 <html>
 <head>
-<link href="includes/in.css" rel="stylesheet" type="text/css">
+
 <title>Warning.</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <style type="text/css">
