@@ -3,7 +3,7 @@ session_start();
 include "includes/functions.php";
 logincheck();
 $username=$_SESSION['username'];
-include "includes/db_connect.php";
+
 
 ?>
 

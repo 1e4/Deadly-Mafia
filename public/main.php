@@ -8,7 +8,7 @@ logincheck();
 
 $username=$_SESSION['username'];
 
-include_once "includes/db_connect.php";
+
 
 
 

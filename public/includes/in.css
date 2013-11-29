@@ -26,6 +26,12 @@ body  {
 
 font-size: 10px; }
 
+table {
+    border: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
 td.header  {  
   font-size: 10px;  
   font-family: Verdana, Arial, Helvetica, sans-serif;

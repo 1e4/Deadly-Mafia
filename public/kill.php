@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "includes/db_connect.php";
+
 include_once"includes/functions.php";
 logincheck();
 include_once "includes/jail_check.php";

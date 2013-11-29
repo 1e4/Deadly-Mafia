@@ -1,7 +1,7 @@
 <?php 
 session_start(); 
 header("Cache-control: private"); 
-include "includes/db_connect.php";
+
 include "includes/functions.php"; ?><link href="includes/test.css" rel="stylesheet" type="text/css">
 
 <? logincheck();

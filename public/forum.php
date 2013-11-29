@@ -1,6 +1,6 @@
 <?
 session_start();
-include "includes/db_connect.php";
+
 include "includes/functions.php";
 logincheck();
 $username=$_SESSION['username'];

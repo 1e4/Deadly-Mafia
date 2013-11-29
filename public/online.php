@@ -2,7 +2,7 @@
 
 include "includes/functions.php";
 
-include "includes/db_connect.php"; 
+ 
 
 logincheck();
 

@@ -1,10 +1,25 @@
 <?php
-session_start(); 
-include_once "db_connect.php";
-$username=$_SESSION['username'];
+session_start();
 
-echo "";
+include_once "config/game.config.php";
 
+include_once "class/functions.class.php";
+include_once "class/database.class.php";
+include_once "class/user.class.php";
+
+$db = new Database();
+$functions = new Functions();
+
+if(isset($_SESSION[GameConfig::$session_name]))
+{
+    $user = new User($db, $userid);
+}
+else
+{
+    $user = new User($db, NULL);
+}
+
+/**
 $query=mysql_query("SELECT * FROM users WHERE username='$username' LIMIT 1");
 $info = mysql_fetch_object($query);
 $don=mysql_num_rows(mysql_query("SELECT * FROM donaters WHERE username='$username'"));
@@ -274,3 +289,4 @@ mysql_query("UPDATE user_info SET respect='$new_res', last_respect='$now' WHERE 
 
 
 ?>
+**/

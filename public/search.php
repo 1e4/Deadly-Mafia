@@ -1,6 +1,6 @@
 <?php 
 session_start();
- include "includes/db_connect.php"; include "includes/functions.php"; logincheck();
+  include "includes/functions.php"; logincheck();
 $username=$_SESSION['username'];
 $query=mysql_query("SELECT * FROM users WHERE username='$username' LIMIT 1");
 $fetch=mysql_fetch_object($query);
