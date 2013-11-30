@@ -44,12 +44,10 @@ class User
     public function isLoggedIn()
     {
         
-        if($this->userid === NULL)
-        {
-            return false;
-        }
+        if(GameConfig::hasLoginSessions())
+            return true;
         
-        return true;
+        return false;
         
     }
     
@@ -58,8 +56,12 @@ class User
      */
     public function handleLoginCheck()
     {
-        if($this->isLoggedIn())
-            header('Location: ' . GameConfig::$site_url . 'powder.php');
+        
+        if(!$this->isLoggedIn())
+        {
+            header('Location: index.php');
+        }
+        
     }
     
     public function login()
@@ -69,29 +71,29 @@ class User
         {
             $email = $_POST['email'];
             $password = hash('sha512', $_POST['password']);
-            $query = $this->db->d_query("SELECT id FROM users_master WHERE email = :email AND password = :password", 
-                    array('email'=>$email, 'password'=>$password));
-            
-            if($query->fetchColumn() > 0)
+            $query = $this->db->d_query("SELECT COUNT(*) AS count, users.id, masterid FROM users_master LEFT JOIN users ON users_master.id = users.masterid WHERE email = :email AND password = :password LIMIT 1", 
+                    array(':email'=>$email, ':password'=>$password));
+                    
+            $fetch = $query->fetchObject();
+            if($fetch->count == 1)
             {
                 //Set the session
-                $_SESSION[GameConfig::getSessionName()] = $query->fetchColumn();
+                GameConfig::setSessions(array($fetch->id, $fetch->masterid));
                 
                 //Update the user table with stats
                 $date = Functions::date();
-                
                 try {
-                    
-                    $this->db->d_beginTransaction();
+                    $this->db->d_beingTransaction();
                     $this->db->d_query("UPDATE users SET lastonline = " . $date . " WHERE userid = " . $query->fetchColumn());
                     $this->db->d_query("INSERT INTO logs_login (`userid`, `ip`) VALUES ('{$query->fetchColumn()})', '{$_SERVER['REMOTE_ADDR']}')");
-                    return true;
-                    
+                    $this->db->d_commit();
                 }catch (Exception $e)
                 {
                     $this->db->d_rollback($e);
-                    return false;
                 }
+                
+                return true;
+                    
             }
         }
         

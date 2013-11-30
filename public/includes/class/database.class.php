@@ -50,7 +50,7 @@ class Database
         if($e !== NULL)
             return $this->db->rollBack();
         
-        echo 'Rollback';
+        return $e->getMessage();
         
     }
     
@@ -60,10 +60,8 @@ class Database
         
         if($param === NULL)
         {
-            dev. 
-           $query = $this->db->query($sql);
+            $query = $this->db->query($sql);
             $trueQuery = $sql;
-            
         }
         else
         {
@@ -73,15 +71,15 @@ class Database
 
             foreach($param as $key=>$value)
             {
-                $trueQuery = str_replace(':' . $key, $value, $trueQuery);
-
-                $query->bindParam(':' . $key, $value);
+                $trueQuery = str_replace($key, $value, $trueQuery);
             }
-            $query->execute();
         }
+        
+        $query->execute($param);
         
         $this->querys[] = $trueQuery;
         $this->lastquery = $trueQuery;
+        
         return $query;
         
     }
