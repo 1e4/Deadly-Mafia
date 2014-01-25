@@ -43,7 +43,7 @@ a.faq:hover {font: 10px verdana; color: #c0ffc0; font-weight: bold; cursor: poin
 .colhdo {color: #ffffa0;}
 .colfriend {color: #F8BC53;}
 .colblock {color: #808080;}
-body {font: 10px verdana; color: #ffffff; background-color: #363636; margin: 5px 5px 5px 5px; cursor: default;}
+body {font: 10px verdana; color: #ffffff; background-color: #363636; cursor: default;}
 td {font: 10px verdana; color: #ffffff;}
 hr {width: 100%; color: #800000;}
 .faqhdr {font: 15px verdana; color: #ffffff; font-weight: bold;}
@@ -61,9 +61,9 @@ hr {width: 100%; color: #800000;}
 
 .tblout {border: 1px; border-style: solid; border-color: #aaaaaa;}
 .tblin {font-size: 11px; padding: 1px; border-style: solid; border-color: #000000; border-width: 0px 0px 0px 0px; color: #ffffff;}
-.tblhdr {color: #373737; text-align: center; border: 1px solid #000000; font-size: 11px; padding: 1px; background-image: url("includes/grad.jpg"); background-color: #AAAAAA; font-weight: bold;}
+.tblhdr {color: #373737; text-align: center; border: 1px solid #000000; font-size: 11px; padding: 1px; background-image: url("images/grad.jpg"); background-color: #AAAAAA; font-weight: bold;}
 
-.tblhdrl {text-align: left; border: 1px solid #000000; font-size: 11px; padding: 1px; background-image: url("includes/grad.jpg"); background-color: #AAAAAA; font-weight: bold;}
+.tblhdrl {text-align: left; border: 1px solid #000000; font-size: 11px; padding: 1px; background-image: url("images/grad.jpg"); background-color: #AAAAAA; font-weight: bold;}
 .gtblout {border: 1px; border-style: solid; border-color: #a0a0a0;}
 
 /*Mail box unread messages*/
@@ -119,7 +119,7 @@ td.head {
 	border: 1px solid #000000;
 	font-size: 11px;
 	padding: 1px;
-	background-image:  url(includes/grad.jpg);
+	background-image:  url(images/grad.jpg);
 	background-color: #cccccc;
 	font-weight: bold;
 	color: #303030;
@@ -157,7 +157,7 @@ td.inner_align {
 	border: 0px none #000000;
 	font-size: 11px;
 	padding: 1px;
-	background-image:  url(includes/grad.jpg);
+	background-image:  url(images/grad.jpg);
 	background-color: #cccccc;
 	font-weight: bold;
 	color: #303030;

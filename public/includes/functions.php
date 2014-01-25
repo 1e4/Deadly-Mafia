@@ -1,23 +1,38 @@
 <?php
 session_start();
+error_reporting(E_ALL);
 
 include_once "config/game.config.php";
+include_once "config/userlevel.config.php";
 
 include_once "class/functions.class.php";
 include_once "class/database.class.php";
 include_once "class/user.class.php";
 
+include_once "class/module.class.php";
+include_once "class/module.interface.php";
+
+//New database
 $db = new Database();
+//New general functions
 $functions = new Functions();
 
-if(isset($_SESSION[GameConfig::$session_name]))
+//Assign user something
+if(GameConfig::hasLoginSessions())
 {
-    $user = new User($db, $userid);
+    $user = new User($db);
 }
 else
 {
     $user = new User($db, NULL);
 }
+
+$module = new Module($db);
+
+//Include the stylesheets needed
+$style = '<link href="includes/in.css" rel="stylesheet" type="text/css"><link href="includes/test.css" rel="stylesheet" type="text/css">';
+
+
 
 /**
 $query=mysql_query("SELECT * FROM users WHERE username='$username' LIMIT 1");

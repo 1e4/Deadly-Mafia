@@ -15,24 +15,40 @@ class User
      */
     private $userid;
     
+    public $results = array();
+    
+    private $users;
+    
     public function __construct($db, $userid = NULL) {
-        
         $this->userid   = $userid;
         $this->db       = $db;
         
         //If $userid == NULL the user isn't logged in, could be on the register page for example
-        if($this->userid !== NULL)
+        if(GameConfig::hasLoginSessions() && $userid == NULL)
         {
             
-            $query = $this->db->d_query("SELECT * FROM users WHERE userid = :userid LIMIT 1", array('userid'=>$this->userid));
+            $query = $this->db->d_query("SELECT * FROM users_master 
+                LEFT JOIN
+                users ON users_master.id = users.masterid
+                LEFT JOIN
+                users_timers ON users.id = users_timers.userid
+                LEFT JOIN
+                user_stats ON users.id = user_stats.id
+                WHERE users.id = :userid LIMIT 1", array(':userid'=>GameConfig::getUserID()), 'users');
+            $this->users = $this->db->getResults();
             
-            $fetch = $query->fetch(PDO::FETCH_ASSOC);
-            
-            var_dump($fetch);
             
             
         }
         
+    }
+    
+    public function get($var)
+    {
+        if(isset($this->users['users'][0]))
+            return $this->users['users'][0]->$var;
+        else
+            return 'trying to get ' . $var;
     }
     
     
@@ -67,25 +83,42 @@ class User
     public function login()
     {
         
+        $return = $this->_generic();
+        GameConfig::setSessions(array($return['userid'], $return['masterid']));
+        $date = Functions::date();
+        try
+        {
+            $this->db->d_beingTransaction();
+            $this->db->d_query("UPDATE users SET lastonline = '{$date}' WHERE userid = {$return['userid']})");
+            $this->db->d_commit();
+        }catch(Exception $e)
+        {
+            $this->db->d_rollback($e);
+        }
+
+    }
+    
+    private function _generic()
+    {
         if(isset($_POST['email']) && isset($_POST['password']))
         {
             $email = $_POST['email'];
             $password = hash('sha512', $_POST['password']);
             $query = $this->db->d_query("SELECT COUNT(*) AS count, users.id, masterid FROM users_master LEFT JOIN users ON users_master.id = users.masterid WHERE email = :email AND password = :password LIMIT 1", 
                     array(':email'=>$email, ':password'=>$password));
-                    
-            $fetch = $query->fetchObject();
-            if($fetch->count == 1)
+            
+//            var_dump($this->db->count);
+            if($query->count == 1)
             {
                 //Set the session
-                GameConfig::setSessions(array($fetch->id, $fetch->masterid));
+                GameConfig::setSessions(array($query->id, $query->masterid));
                 
                 //Update the user table with stats
                 $date = Functions::date();
                 try {
                     $this->db->d_beingTransaction();
-                    $this->db->d_query("UPDATE users SET lastonline = " . $date . " WHERE userid = " . $query->fetchColumn());
-                    $this->db->d_query("INSERT INTO logs_login (`userid`, `ip`) VALUES ('{$query->fetchColumn()})', '{$_SERVER['REMOTE_ADDR']}')");
+                    $this->db->d_query("UPDATE users SET lastonline = " . $date . " WHERE userid = " . $query->id);
+//                    $this->db->d_query("INSERT INTO logs_login (`userid`, `ip`) VALUES ('{$query->id})', '{$_SERVER['REMOTE_ADDR']}')");
                     $this->db->d_commit();
                 }catch (Exception $e)
                 {
@@ -96,9 +129,57 @@ class User
                     
             }
         }
-        
         return false;
+    }
+    
+    public function getInboxCount()
+    {
+        return 5;
+    }
+    
+    public function rank($rank = NULL)
+    {
+        if($rank === NULL)
+        {
+            $rank = $this->get('rank');
+        }
         
+        switch($rank)
+        {
+            case 1:
+                return 'Scum';
+                
+            default: 
+                return 'Scum';
+        }
+        
+    }
+    
+    public function location($loc = NULL)
+    {
+        if($loc === NULL)
+        {
+            $loc = $this->get('location');
+        }
+        
+        switch($loc)
+        {
+            default: 
+                $state = 'England';
+        }
+        
+        return $state;
+    }
+    
+    public function __get($key)
+    {
+        if(array_key_exists($key, $this->results))
+                return $this->results[$key];
+    }
+    
+    public function __set($name, $value)
+    {
+        $this->result[$name] = $value;
     }
     
 }

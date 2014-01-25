@@ -3,7 +3,9 @@
         <?php 
             echo $db->getQuerys();
             echo $db->getLastQuery();
-            var_dump($_SERVER);
+            echo "SERVER<hr />";
+            var_dump($_SERVER);            
+            echo "SESSION<hr />";
             var_dump($_SESSION);
         ?>
     </body>

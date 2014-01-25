@@ -1,17 +1,18 @@
 <?php
-session_start();
 include "includes/functions.php";
+$user->handleLoginCheck();
 ?>
 <html>
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <?php echo $style;?>
     </head>
     <body>
-        <table width="150px">
+        <table class="menuTable">
             <?php
             $string = '';
-            if($user['userlevel'] >= UserlevelConfig::admin)
+            if($user->get('userlevel') >= UserlevelConfig::$admin)
             {
                 $string .= <<<EOF
                     <tr>
@@ -20,10 +21,9 @@ include "includes/functions.php";
                         </td>
                     </tr>;
 EOF;
-                echo $string;
             }
             
-            if($user['userlevel'] >= UserlevelConfig::moderator)
+            if($user->get('userlevel') >= UserlevelConfig::$moderator)
             {
                 $string .= <<<EOF
                         <tr>
@@ -34,7 +34,7 @@ EOF;
 EOF;
             }
             
-            if($user['userlevel'] >= UserlevelConfig::helpdesk)
+            if($user->get('userlevel') >= UserlevelConfig::$helpdesk)
             {
                 $string .= <<<EOF
                         <tr>
@@ -45,7 +45,7 @@ EOF;
 EOF;
             }
             
-            if($user['userlevel'] >= UserlevelConfig::forummod)
+            if($user->get('userlevel') >= UserlevelConfig::$forummod)
             {
                 $string .= <<< EOF
                         <tr>
@@ -62,7 +62,7 @@ EOF;
             ?>
         </table>
         
-        <table width="150px">
+        <table class="menuTable">
             <tbody>
                 <!-- information -->
                 <tr>
@@ -70,7 +70,7 @@ EOF;
                 </tr>
                 <tr>
                     <td class="menuContent">
-                        <a href="Dailnews.php" target="main">&gt; News</a><br />
+                        <a href="news.php" target="main">&gt; News</a><br />
                         <a href="faq.php" target="main">&gt; FAQ</a><br />
                         <a href="online.php" target="main">&gt; Users Online</a> <br />
                         <a href="search.php" target="main">&gt; Find Players</a><br />

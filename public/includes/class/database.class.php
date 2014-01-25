@@ -8,6 +8,7 @@ class Database
     
     private $lastquery;
     
+    public $result;
     
     
     public function __construct()
@@ -54,7 +55,7 @@ class Database
         
     }
     
-    public function d_query($sql, $param = NULL)
+    public function d_query($sql, $param = NULL, $arrayKey = false)
     {
         
         
@@ -73,15 +74,27 @@ class Database
             {
                 $trueQuery = str_replace($key, $value, $trueQuery);
             }
+            
+            $query->execute($param);
         }
         
-        $query->execute($param);
         
+               
         $this->querys[] = $trueQuery;
         $this->lastquery = $trueQuery;
+        $fetch = $query->fetchAll(PDO::FETCH_OBJ);
+        if(!$arrayKey)
+            $this->result[] = $fetch;
+        else
+            $this->result[$arrayKey] = $fetch;
         
-        return $query;
+        return $fetch[0];
         
+    }
+    
+    public function getResults()
+    {
+        return $this->result;
     }
     
     public function getQuerys()
@@ -92,6 +105,18 @@ class Database
     public function getLastQuery()
     {
         return var_dump($this->lastquery);
+    }
+    
+    public function __get($key)
+    {
+        if(array_key_exists($key, $this->result[0]))
+            return $this->result[$key];
+        
+    }
+    
+    public function __set($name, $value)
+    {
+        $this->result[$name] = $value;
     }
     
 }
