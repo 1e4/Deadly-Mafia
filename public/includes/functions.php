@@ -94,7 +94,7 @@ function status($date)
 
     $calc = $timeNow - $usersLastOnlineTime;
 
-    if($calc > 0 && $calc <= (60*60*15))
+    if($calc >= 0 && $calc <= (60*60*15))
         return '<font color="lime">Online</font>';
     else if($calc <= (60*60*60))
         return '<font color="orange">Away</font>';
