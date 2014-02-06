@@ -1,6 +1,5 @@
 <?php
 include "includes/functions.php";
-$user->handleLoginCheck();
 ?>
 <html>
     <head>
@@ -12,7 +11,7 @@ $user->handleLoginCheck();
         <table class="menuTable">
             <?php
             $string = '';
-            if($user->get('userlevel') >= UserlevelConfig::$admin)
+            if($user->userlevel >= UserlevelConfig::$admin)
             {
                 $string .= <<<EOF
                     <tr>
@@ -23,7 +22,7 @@ $user->handleLoginCheck();
 EOF;
             }
             
-            if($user->get('userlevel') >= UserlevelConfig::$moderator)
+            if($user->userlevel >= UserlevelConfig::$moderator)
             {
                 $string .= <<<EOF
                         <tr>
@@ -34,7 +33,7 @@ EOF;
 EOF;
             }
             
-            if($user->get('userlevel') >= UserlevelConfig::$helpdesk)
+            if($user->userlevel >= UserlevelConfig::$helpdesk)
             {
                 $string .= <<<EOF
                         <tr>
@@ -45,7 +44,7 @@ EOF;
 EOF;
             }
             
-            if($user->get('userlevel') >= UserlevelConfig::$forummod)
+            if($user->userlevel >= UserlevelConfig::$forummod)
             {
                 $string .= <<< EOF
                         <tr>

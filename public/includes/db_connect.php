@@ -1,19 +1,20 @@
 <?php
+/**
+ * The past is a ghost, the future a dream. All we ever have is now. –Bill Cosby.
+ * @author: Ian <brokenlust@live.co.uk>
+ * @version 1
+ * @package DeadlyMafia
+ * @copyright Deadly Mafia 2014
+ */
+try
+{
+    $db = new PDO('mysql:dbname=dm;host=localhost', 'root', '');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$mysql_server = "localhost";
+}catch(PDOException $e)
+{
 
-$mysql_user = "rayer_game";
-
-$mysql_password = "password";
-
-$mysql_database = "rayer_game";
-
- 
-
-$connection = mysql_connect("$mysql_server","$mysql_user","$mysql_password") or die ("Unable to connect to MySQL server.");
-
-$db = mysql_select_db("$mysql_database") or die ("Unable to select requested database.");
+    die('PDO Connection has failed<br />' . $e->getMessage());
 
 
-
-?>
+}

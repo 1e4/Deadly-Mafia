@@ -1,8 +1,8 @@
 
 
         <?php 
-            echo $db->getQuerys();
-            echo $db->getLastQuery();
+//            echo $db->getQuerys();
+//            echo $db->getLastQuery();
             echo "SERVER<hr />";
             var_dump($_SERVER);            
             echo "SESSION<hr />";

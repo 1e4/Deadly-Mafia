@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * The past is a ghost, the future a dream. All we ever have is now. –Bill Cosby.
+ * @author: Ian <brokenlust@live.co.uk>
+ * @version 1
+ * @package DeadlyMafia
+ * @copyright Deadly Mafia 2014
+ */
 class GameConfig
 {
     public static $session_prefix       = 'dm_';
@@ -32,8 +38,10 @@ class GameConfig
     public static function hasLoginSessions()
     {
         if(isset($_SESSION[self::$session_prefix . self::$session_userid])
-                && isset($_SESSION[self::$session_prefix . self::$session_masterid])
+                && isset($_SESSION[self::$session_prefix . self::$session_masterid]))
                 return true;
+
+        return false;
     }
     
     public static function hasSSL()

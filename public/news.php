@@ -1,9 +1,14 @@
 <?php
-include "includes/functions.php";  
-$user->handleLoginCheck();
-$module_name = "news";
-include_once "includes/class/{$module_name}.class.php";
-$news = new News($db);
+/**
+ * The past is a ghost, the future a dream. All we ever have is now. –Bill Cosby.
+ * @author: Ian <brokenlust@live.co.uk>
+ * @version 1
+ * @package DeadlyMafia
+ * @copyright Deadly Mafia 2014
+ */
+include "includes/functions.php";
+$news = $db->query("SELECT * FROM updates ORDER BY id DESC");
+$news = $news->fetchAll(PDO::FETCH_OBJ);
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,7 +19,7 @@ $news = new News($db);
     </head>
     <body>
                 <?php
-                foreach($news->getResults() as $key)
+                foreach($news as $key)
                 {
                     echo <<<EOF
                     <table width="80%">

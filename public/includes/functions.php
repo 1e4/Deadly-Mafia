@@ -1,36 +1,71 @@
 <?php
+/**
+ * The past is a ghost, the future a dream. All we ever have is now. –Bill Cosby.
+ * @author: Ian <brokenlust@live.co.uk>
+ * @version 1
+ * @package DeadlyMafia
+ * @copyright Deadly Mafia 2014
+ */
 session_start();
 error_reporting(E_ALL);
 
+include_once "includes/db_connect.php";
+
 include_once "config/game.config.php";
 include_once "config/userlevel.config.php";
+include_once "config/rank.config.php";
 
-include_once "class/functions.class.php";
-include_once "class/database.class.php";
-include_once "class/user.class.php";
-
-include_once "class/module.class.php";
-include_once "class/module.interface.php";
-
-//New database
-$db = new Database();
-//New general functions
-$functions = new Functions();
-
-//Assign user something
-if(GameConfig::hasLoginSessions())
+function logincheck()
 {
-    $user = new User($db);
-}
-else
-{
-    $user = new User($db, NULL);
+
+    if(GameConfig::hasLoginSessions() === false)
+    {
+        header('Location: index.php');
+    }
+
+    return true;
 }
 
-$module = new Module($db);
+logincheck();
+$query = $db->prepare("SELECT * FROM users_master
+                LEFT JOIN
+                users ON users_master.id = users.masterid
+                LEFT JOIN
+                users_timers ON users.id = users_timers.userid
+                LEFT JOIN
+                user_stats ON users.id = user_stats.id
+                WHERE users.id = :userid LIMIT 1");
+
+$query->execute(array(':userid'=>GameConfig::getUserID()));
+
+$user = $query->fetchObject();
 
 //Include the stylesheets needed
 $style = '<link href="includes/in.css" rel="stylesheet" type="text/css"><link href="includes/test.css" rel="stylesheet" type="text/css">';
+
+function id2location($location)
+{
+    switch($location)
+    {
+        case 1:
+            return 'London';
+        break;
+        default:
+            return 'London';
+    }
+}
+
+function id2rank($rank)
+{
+    switch($rank)
+    {
+        case 1:
+            return 'Scum';
+        break;
+        default:
+            return 'Scum';
+    }
+}
 
 
 

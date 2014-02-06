@@ -2,8 +2,6 @@
 
 include_once "./includes/functions.php";
 
-$user->handleLoginCheck();
-
 ?>
 
 <!DOCTYPE html>
