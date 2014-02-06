@@ -41,7 +41,7 @@ $online = $db->query("SELECT username, users.id, userlevel FROM users INNER JOIN
                                         $currentusers[] = "<a href='profile.php?id={$usersOnline['id']}'><font color='#adff2f'>{$usersOnline['username']}</font></a>";
                                     break;
                                     case 2:
-                                        $currentusers[] = "<a href='profile.php?id={$usersOnline['username']}'><font color='#cd5c5c'>{$usersOnline['username']}</font></a>";
+                                        $currentusers[] = "<a href='profile.php?id={$usersOnline['id']}'><font color='#cd5c5c'>{$usersOnline['username']}</font></a>";
                                     break;
                                 }
                             }
