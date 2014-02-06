@@ -9,8 +9,8 @@
 
 include "includes/functions.php";
 $date = time()-(60*60*15);
-$online = $db->query("SELECT username, users.id, userlevel, COUNT(*) AS totalOnline FROM users INNER JOIN users_master on users.masterid = users_master.id WHERE online >= {$date}");
-$online = $online->fetchAll(PDO::FETCH_OBJ);
+$total = $db->query("SELECT COUNT(*) AS totalOnline FROM users WHERE online >= {$date}")->fetchColumn();
+$online = $db->query("SELECT username, users.id, userlevel FROM users INNER JOIN users_master on users.masterid = users_master.id WHERE online >= {$date}");
 ?>
     <!DOCTYPE html>
     <html>
@@ -32,16 +32,16 @@ $online = $online->fetchAll(PDO::FETCH_OBJ);
                             <?php
                             foreach($online as $usersOnline)
                             {
-                                switch($usersOnline->userlevel)
+                                switch($usersOnline['userlevel'])
                                 {
                                     case 0:
-                                        $currentusers[] = "<a href='profile.php?id={$usersOnline->id}'>{$usersOnline->username}</a>";
+                                        $currentusers[] = "<a href='profile.php?id={$usersOnline['id']}'>{$usersOnline['username']}</a>";
                                     break;
                                     case 1:
-                                        $currentusers[] = "<a href='profile.php?id={$usersOnline->id}'><font color='#adff2f'>{$usersOnline->username}</font></a>";
+                                        $currentusers[] = "<a href='profile.php?id={$usersOnline['id']}'><font color='#adff2f'>{$usersOnline['username']}</font></a>";
                                     break;
                                     case 2:
-                                        $currentusers[] = "<a href='profile.php?id={$usersOnline->id}'><font color='#cd5c5c'>{$usersOnline->username}</font></a>";
+                                        $currentusers[] = "<a href='profile.php?id={$usersOnline['username']}'><font color='#cd5c5c'>{$usersOnline['username']}</font></a>";
                                     break;
                                 }
                             }
@@ -51,7 +51,7 @@ $online = $online->fetchAll(PDO::FETCH_OBJ);
                     </tr>
                     <tr>
                         <td>
-                            Total online: <?php echo number_format($online[0]->totalOnline); ?>
+                            Total online: <?php echo number_format($total); ?>
                         </td>
                     </tr>
                 </tbody>

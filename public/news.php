@@ -8,7 +8,6 @@
  */
 include "includes/functions.php";
 $news = $db->query("SELECT * FROM updates ORDER BY id DESC");
-$news = $news->fetchAll(PDO::FETCH_OBJ);
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,7 +18,7 @@ $news = $news->fetchAll(PDO::FETCH_OBJ);
     </head>
     <body>
                 <?php
-                foreach($news as $key)
+                while($key = $news->fetchObject())
                 {
                     echo <<<EOF
                     <table width="80%">

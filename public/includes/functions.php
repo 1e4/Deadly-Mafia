@@ -10,6 +10,7 @@ session_start();
 error_reporting(E_ALL);
 
 include_once "includes/db_connect.php";
+include_once "includes/class/functions.class.php";
 
 include_once "config/game.config.php";
 include_once "config/userlevel.config.php";
@@ -66,6 +67,45 @@ function id2rank($rank)
             return 'Scum';
     }
 }
+
+function rank_wealth($wealth)
+{
+    if($wealth >= 0 && $wealth <= 10000)
+        return 'Broke';
+
+    return 'Broke';
+}
+
+function rank_rankpoints($rp)
+{
+    if($rp > 0 && $rp <= 10)
+        return 'Scum';
+    else if($rp > 10 && $rp <= 30)
+        return 'Goon';
+
+    return 'Scum';
+}
+
+function status($date)
+{
+    $date = date_create($date);
+    $usersLastOnlineTime = date_timestamp_get($date);
+    $timeNow = date_timestamp_get(date_create());
+
+    $calc = $timeNow - $usersLastOnlineTime;
+
+    if($calc > 0 && $calc <= (60*60*15))
+        return '<font color="lime">Online</font>';
+    else if($calc <= (60*60*60))
+        return '<font color="orange">Away</font>';
+
+    return '<font color="red">Offline</font>';
+
+
+}
+
+$date = functions::date();
+$db->query("UPDATE users SET online = '$date'");
 
 
 

@@ -12,7 +12,7 @@ include_once "./includes/functions.php";
         <?=$style?>
     </head>
         <frameset  rows="100,*" border="0">
-            <frame name="littlebanner" src="top.php" marginwidth="0" marginheight="0" scrolling="no" frameborder="0">
+            <frame name="littlebanner" src="banner.html" marginwidth="0" marginheight="0" scrolling="no" frameborder="0">
             <frameset  rows="40,*" border="0">
             <frame name="littlebanner1" src="statbar.php" marginwidth="0" marginheight="0" scrolling="no" frameborder="0">
         <frameset  cols="173,*" border="0">
