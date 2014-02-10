@@ -16,6 +16,11 @@ include_once "config/game.config.php";
 include_once "config/userlevel.config.php";
 include_once "config/rank.config.php";
 
+foreach ($_POST as $key => $val)
+{
+    $_POST[$key] = htmlentities($val);
+}
+
 function logincheck()
 {
 
@@ -39,7 +44,7 @@ $query = $db->prepare("SELECT * FROM users_master
 
 $query->execute(array(':userid'=>GameConfig::getUserID()));
 
-$user = $query->fetchObject();
+$oUser = $query->fetchObject();
 
 //Include the stylesheets needed
 $style = '<link href="includes/in.css" rel="stylesheet" type="text/css"><link href="includes/test.css" rel="stylesheet" type="text/css">';
@@ -105,7 +110,8 @@ function status($date)
 }
 
 $date = functions::date();
-$db->query("UPDATE users SET online = '$date'");
+$userid = GameConfig::getUserID();
+$db->query("UPDATE users SET online = '$date' WHERE id = {$userid}");
 
 
 

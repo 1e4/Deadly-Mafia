@@ -8,61 +8,63 @@ include "includes/functions.php";
             <?php echo $style;?>
     </head>
     <body>
+        
         <table class="menuTable">
-            <?php
-            $string = '';
-            if($user->userlevel >= UserlevelConfig::$admin)
-            {
-                $string .= <<<EOF
+            <tbody>
+                <?php
+                $string = '';
+                if($oUser->userlevel >= UserlevelConfig::$admin)
+                {
+                    $string .= <<<EOF
                     <tr>
                         <td>
                             <a href="#">Admin CP</a>
                         </td>
-                    </tr>;
+                    </tr>
 EOF;
-            }
-            
-            if($user->userlevel >= UserlevelConfig::$moderator)
-            {
-                $string .= <<<EOF
+                }
+
+                if($oUser->userlevel >= UserlevelConfig::$moderator)
+                {
+                    $string .= <<<EOF
                         <tr>
                             <td>
                                 <a href="#">Mod CP</a>
                             </td>
                         </tr>
 EOF;
-            }
-            
-            if($user->userlevel >= UserlevelConfig::$helpdesk)
-            {
-                $string .= <<<EOF
+                }
+
+                if($oUser->userlevel >= UserlevelConfig::$helpdesk)
+                {
+                    $string .= <<<EOF
                         <tr>
                             <td>
                                 <a href="#">Helpdesk CP</a>
                             </td>
                         </tr>
 EOF;
-            }
-            
-            if($user->userlevel >= UserlevelConfig::$forummod)
-            {
-                $string .= <<< EOF
+                }
+
+                if($oUser->userlevel >= UserlevelConfig::$forummod)
+                {
+                    $string .= <<< EOF
                         <tr>
                             <td>
                                 <a href="#">Helpdesk CP</a>
                             </td>
                         </tr>
 EOF;
-                        
-            }
-            
-            echo $string;
-            
-            ?>
-        </table>
-        
-        <table class="menuTable">
-            <tbody>
+
+                }
+                if(!empty($string))
+                {
+                    echo "<tr><th class='menuHeader'>Control Panels</th>";
+                }
+                echo $string;
+
+                ?>
+
                 <!-- information -->
                 <tr>
                     <th class="menuHeader">Information</th>
@@ -77,8 +79,7 @@ EOF;
                         <a href="countrys.php" target="main">&gt; Domination</a><br />
                         <a href="points.php" target="main">&gt; Points</a><br />
                         <a href="hitlist.php" target="main">&gt; Hitlist</a><br />
-                        <a href="top20.php" target="main">&gt; Most Wanted</a><br />
-                        <a href="mission1.php" target="main">&gt; Missions</a><br />
+                        <a href="missions.php" target="main">&gt; Missions</a><br />
                         <a href="user.php" target="main">&gt; Edit Profile</a><br />
                         <a href="you.php" target="main">&gt; My Stats</a><br />
                         <a href="notes.php" target="main">&gt; Notepad</a><br />
