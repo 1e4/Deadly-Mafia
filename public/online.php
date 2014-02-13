@@ -8,9 +8,14 @@
  */
 
 include "includes/functions.php";
-$date = time()-(60*60*15);
-$total = $db->query("SELECT COUNT(*) AS totalOnline FROM users WHERE online >= {$date}")->fetchColumn();
-$online = $db->query("SELECT username, users.id, userlevel FROM users INNER JOIN users_master on users.masterid = users_master.id WHERE online >= {$date}");
+$datetime = (time()-(60*60)*15);
+
+$date = new DateTime();
+$date->setTimestamp($datetime);
+$date = $date->format('Y-m-d H:i:s');
+
+$total = $db->query("SELECT COUNT(*) AS totalOnline FROM users WHERE online >= '{$date}'")->fetchColumn();
+$online = $db->query("SELECT username, users.id, userlevel FROM users INNER JOIN users_master on users.masterid = users_master.id WHERE online >= '{$date}'");
 ?>
     <!DOCTYPE html>
     <html>
@@ -41,6 +46,9 @@ $online = $db->query("SELECT username, users.id, userlevel FROM users INNER JOIN
                                         $currentusers[] = "<a href='profile.php?id={$usersOnline['id']}'><font color='#adff2f'>{$usersOnline['username']}</font></a>";
                                     break;
                                     case 2:
+                                        $currentusers[] = "<a href='profile.php?id={$usersOnline['id']}'><font color='#cd5c5c'>{$usersOnline['username']}</font></a>";
+                                    break;
+                                    default:
                                         $currentusers[] = "<a href='profile.php?id={$usersOnline['id']}'><font color='#cd5c5c'>{$usersOnline['username']}</font></a>";
                                     break;
                                 }

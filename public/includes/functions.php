@@ -33,6 +33,11 @@ function logincheck()
 }
 
 logincheck();
+
+$date       = functions::date();
+$userid     = GameConfig::getUserID();
+$masterid   = GameConfig::getMasterID();
+
 $query = $db->prepare("SELECT * FROM users_master
                 LEFT JOIN
                 users ON users_master.id = users.masterid
@@ -109,8 +114,7 @@ function status($date)
 
 }
 
-$date = functions::date();
-$userid = GameConfig::getUserID();
+
 $db->query("UPDATE users SET online = '$date' WHERE id = {$userid}");
 
 

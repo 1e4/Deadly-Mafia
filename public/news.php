@@ -7,7 +7,7 @@
  * @copyright Deadly Mafia 2014
  */
 include "includes/functions.php";
-$news = $db->query("SELECT * FROM updates ORDER BY id DESC");
+$iNews = $db->query("SELECT COUNT(*) FROM updates")->fetchColumn();
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,27 +18,32 @@ $news = $db->query("SELECT * FROM updates ORDER BY id DESC");
     </head>
     <body>
                 <?php
-                while($key = $news->fetchObject())
+                if($iNews > 0)
                 {
-                    echo <<<EOF
-                    <table width="80%">
-                        <thead>
-                            <tr>
-                                <th>{$key->title}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{$key->update}</td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td class="signature>Written by {$key->username}</td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                    $oNews = $db->query("SELECT * FROM updates ORDER BY id DESC");
+
+                    while($key = $oNews->fetchObject())
+                    {
+                        echo <<<EOF
+                        <table width="80%">
+                            <thead>
+                                <tr>
+                                    <th>{$key->title}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{$key->update}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td class="signature>Written by {$key->username}</td>
+                                </tr>
+                            </tfoot>
+                        </table>
 EOF;
+                    }
                 }
                 ?>
     </body>
