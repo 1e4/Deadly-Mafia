@@ -11,6 +11,12 @@ class Functions
         
     }
 
+    /**
+     * Works out the time from, or time till the action
+     * @param $time DateTime string
+     * @param null $invert
+     * @return string
+     */
     public static function timeLeft($time, $invert = null)
     {
 
@@ -22,6 +28,11 @@ class Functions
 
         //Diff both vars above
         $diff = $now->diff($date);
+
+        //Get the timestamps
+        $nowDate = $now->getTimestamp();
+        $timestampDate = $date->getTimestamp();
+
 
         //If the date is inverted meaning it has already passed
         //Date will always be set unless this is invert
@@ -83,10 +94,14 @@ class Functions
         }
 
         //Append the date with " left"
-            $aDate[] = ' left';
+        $aDate[] = ' left';
 
         //return the remaining time
-        return implode(' ', $aDate);
+        $aReturn[] = implode(' ', $aDate);
+        $aReturn[] = $nowDate - $timestampDate;
+        var_dump($aReturn);
+        return $aReturn;
+
     }
     
 }

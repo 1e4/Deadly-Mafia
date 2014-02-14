@@ -15,6 +15,8 @@ include_once "includes/class/functions.class.php";
 include_once "config/game.config.php";
 include_once "config/userlevel.config.php";
 include_once "config/rank.config.php";
+include_once "config/country.config.php";
+include_once "config/user.config.php";
 
 foreach ($_POST as $key => $val)
 {
@@ -56,34 +58,17 @@ $style = '<link href="includes/in.css" rel="stylesheet" type="text/css"><link hr
 
 function id2location($location)
 {
-    switch($location)
-    {
-        case 1:
-            return 'London';
-        break;
-        default:
-            return 'London';
-    }
+    return CountryConfig::$countries[$location]['name'];
 }
 
 function id2rank($rank)
 {
-    switch($rank)
-    {
-        case 1:
-            return 'Scum';
-        break;
-        default:
-            return 'Scum';
-    }
+    return RankConfig::rank($rank);
 }
 
 function rank_wealth($wealth)
 {
-    if($wealth >= 0 && $wealth <= 10000)
-        return 'Broke';
-
-    return 'Broke';
+    return RankConfig::wealth($wealth);
 }
 
 function rank_rankpoints($rp)

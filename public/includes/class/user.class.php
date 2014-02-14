@@ -143,16 +143,16 @@ class User
         {
             $rank = $this->get('rank');
         }
-        
+
         switch($rank)
         {
             case 1:
                 return 'Scum';
-                
-            default: 
+
+            default:
                 return 'Scum';
         }
-        
+
     }
     
     public function location($loc = NULL)
@@ -164,10 +164,10 @@ class User
         
         switch($loc)
         {
-            default: 
+            default:
                 $state = 'England';
         }
-        
+
         return $state;
     }
     
